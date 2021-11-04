@@ -13,13 +13,13 @@ int getInvertNumber(int number) {
 }
 
 /// Є паліндромом.
-bool isPalindrom(const int &number) {
+bool isPalindrome(const int &number) {
   return number == getInvertNumber(number);
 }
 
 int main() {
   for (int i = 10; i < 300; ++i) {
-    if (isPalindrom(i * i)) {
+    if (isPalindrome(i * i)) {
       std::cout << std::string(32, '-') << '\n'
                 << "Number: " << i << '\n'
                 << "Palindrom: " << i * i << '\n';
