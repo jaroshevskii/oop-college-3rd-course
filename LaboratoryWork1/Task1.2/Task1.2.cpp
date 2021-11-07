@@ -1,19 +1,24 @@
 #include <iostream>
 
+/// Надрукувати помилку.
+void printError(const std::string &text) {
+  std::cout << '\n' << "error: " << text << '\n' << '\n';
+}
+
 /// Отримати ціле число.
-int getInt(const int &minValue) {
+int getInt(const int &min, const int &max) {
   int value;
 
   while (true) {
     std::cout << "> ";
     std::cin >> value;
-    
-    if (value >= minValue)
-      return value;
 
-    std::cout << '\n';
-    std::cout << "error: The value is incorrect.\n";
-    std::cout << '\n';
+    if (value >= min && value <= max)
+      return value;
+    if (value < min)
+      printError("The value is too small.");
+    if (value > max)
+      printError("The value is too large.");
   }
 }
 
@@ -25,7 +30,6 @@ int getSumOfDigits(int number) {
     sumOfDigits += number % 10;
     number /= 10;
   }
-
   return sumOfDigits;
 }
 
@@ -41,7 +45,7 @@ int getLargestNumberBySumOfDigits() {
   int sumOfDigits = 0;
 
   while (true) {
-    number = getInt(0);
+    number = getInt(INT32_MIN, INT32_MAX);
 
     if (number == 0) {
       std::cout << '\n';
