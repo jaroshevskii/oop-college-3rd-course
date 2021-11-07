@@ -8,7 +8,6 @@ int getInvertNumber(int number) {
     invertNumber = invertNumber * 10 + number % 10;
     number /= 10;
   }
-
   return invertNumber;
 }
 
@@ -18,7 +17,7 @@ bool isPalindrome(const int &number) {
 }
 
 int main() {
-  for (int i = 10; i < 300; ++i) {
+  for (int i = 10; i < 100; ++i) {
     if (isPalindrome(i * i)) {
       std::cout << std::string(32, '-') << '\n'
                 << "Number: " << i << '\n'
