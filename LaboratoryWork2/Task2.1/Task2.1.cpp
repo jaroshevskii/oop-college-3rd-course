@@ -38,7 +38,7 @@ double getArrayValue(const int &index) {
     int value;
 
     while (true) {
-      value = getRandomNumber(-7, 13);
+      value = getRandomNumber(-7, 12);
 
       if (value % 2 != 0)
         return value;
@@ -51,7 +51,7 @@ double getArrayValue(const int &index) {
   case 7:
     return getRandomNumber(23, 71);
   case 8:
-    return getRandomNumber(0, 2);
+    return getRandomNumber(0, 1);
   case 9:
     return getRandomNumber(sqrt(17), sqrt(182));
   default:
