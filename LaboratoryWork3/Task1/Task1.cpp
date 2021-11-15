@@ -1,15 +1,16 @@
 #include <array>
+#include <iomanip>
 #include <iostream>
 
 struct Element {
   size_t i;
   size_t j;
-  int value;
+  double value;
 };
 
 /// Надрукувати масив.
 template <size_t Size>
-void printArray(const std::array<std::array<int, Size>, Size> &array) {
+void printArray(const std::array<std::array<double, Size>, Size> &array) {
   std::cout << "Array:\n";
 
   for (const auto &i : array) {
@@ -24,8 +25,9 @@ void printArray(const std::array<std::array<int, Size>, Size> &array) {
 
 /// Отримати мінімальний та максимальний елемент.
 template <size_t Size>
-void setMinAndMaxElement(Element &minElement, Element &maxElement,
-                         const std::array<std::array<int, Size>, Size> &array) {
+void setMinAndMaxElement(
+    Element &minElement, Element &maxElement,
+    const std::array<std::array<double, Size>, Size> &array) {
   for (size_t i = 1; i != Size; ++i) {
     for (size_t j = 1; j != Size; ++j) {
       if (array[i][j] < minElement.value)
@@ -47,8 +49,8 @@ void printMinAndMaxElement(Element &minElement, Element &maxElement) {
 
 /// Отримати середє арифметичне рядків.
 template <size_t Size>
-std::array<double, Size>
-getArithmeticMeanOfRows(const std::array<std::array<int, Size>, Size> &array) {
+std::array<double, Size> getArithmeticMeanOfRows(
+    const std::array<std::array<double, Size>, Size> &array) {
   std::array<double, Size> arithmeticMeanOfRows;
   int sumOfRows;
 
@@ -58,7 +60,7 @@ getArithmeticMeanOfRows(const std::array<std::array<int, Size>, Size> &array) {
     for (size_t j = 0; j < Size; ++j)
       sumOfRows += array[i][j];
 
-    arithmeticMeanOfRows[i] = static_cast<double>(sumOfRows) / Size;
+    arithmeticMeanOfRows[i] = sumOfRows / Size;
   }
   return arithmeticMeanOfRows;
 }
@@ -76,9 +78,9 @@ void printArithmeticMeanOfRows(
 
 /// Отримати добуток елементів головної діагоналі.
 template <size_t Size>
-int getProductOfElementsOfMainDiagonal(
-    const std::array<std::array<int, Size>, Size> &array) {
-  int productOfElements = 1;
+double getProductOfElementsOfMainDiagonal(
+    const std::array<std::array<double, Size>, Size> &array) {
+  double productOfElements = 1.0;
 
   for (size_t i = 0; i != Size; ++i)
     productOfElements *= array[i][i];
@@ -87,9 +89,9 @@ int getProductOfElementsOfMainDiagonal(
 
 /// Отримати суму елементів головної діагоналі.
 template <size_t Size>
-int getSumOfElementsOfMainDiagonal(
-    const std::array<std::array<int, Size>, Size> &array) {
-  int sumOfElements = 0;
+double getSumOfElementsOfMainDiagonal(
+    const std::array<std::array<double, Size>, Size> &array) {
+  double sumOfElements = 0.0;
 
   for (size_t i = 0; i != Size; ++i)
     sumOfElements += array[i][i];
@@ -98,9 +100,9 @@ int getSumOfElementsOfMainDiagonal(
 
 /// Отримати суму елементів під головною діагоналлю.
 template <size_t Size>
-int getSumOfElementsUnderMainDiagonal(
-    const std::array<std::array<int, Size>, Size> &array) {
-  int sumOfElements = 0;
+double getSumOfElementsUnderMainDiagonal(
+    const std::array<std::array<double, Size>, Size> &array) {
+  double sumOfElements = 0.0;
 
   for (size_t i = 0; i != Size; ++i) {
     for (size_t j = 0; j != Size; ++j) {
@@ -113,11 +115,15 @@ int getSumOfElementsUnderMainDiagonal(
 
 int main() {
   const size_t size = 5;
-  std::array<std::array<int, size>, size> array = {{{0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4}}};
+  std::array<std::array<double, size>, size> array = {
+      {{0.0, 1.0, 2.0, 3.0, 4.0},
+       {0.0, 1.0, 2.0, 3.0, 4.0},
+       {0.0, 1.0, 2.0, 3.0, 4.0},
+       {0.0, 1.0, 2.0, 3.0, 4.0},
+       {0.0, 1.0, 2.0, 3.0, 4.0}}};
+  
+  //
+  std::cout << std::fixed << std::setprecision(2);
 
   printArray(array);
 
@@ -135,7 +141,7 @@ int main() {
   printArithmeticMeanOfRows(arithmeticMeanOfRows);
 
   // Добуток елементів головної діагоналі.
-  const int productOfElementsOfMainDiagonal =
+  const double productOfElementsOfMainDiagonal =
       getProductOfElementsOfMainDiagonal(array);
 
   std::cout << "The Product of the elements of the main diagonal: "
@@ -143,14 +149,15 @@ int main() {
             << '\n';
 
   // Сума елементів головної діагоналі.
-  const int sumOfElementsOfMainDiagonal = getSumOfElementsOfMainDiagonal(array);
+  const double sumOfElementsOfMainDiagonal =
+      getSumOfElementsOfMainDiagonal(array);
 
   std::cout << "The Sum of the elements of the main diagonal: "
             << sumOfElementsOfMainDiagonal << '\n'
             << '\n';
 
   // Сума елеметнтів під головною діагоналлю.
-  const int sumOfElementsUnderMainDiagonal =
+  const double sumOfElementsUnderMainDiagonal =
       getSumOfElementsUnderMainDiagonal(array);
 
   std::cout << "The sum of the elements under the main diagonal: "
