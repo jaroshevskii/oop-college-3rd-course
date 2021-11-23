@@ -32,13 +32,24 @@ void printValues(const std::array<std::array<int, Size>, Size> &array) {
 int main() {
   const size_t size = 5;
   std::array<std::array<int, size>, size> array = {{{0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4}}};
+                                                    {1, 1, 2, 3, 4},
+                                                    {2, 1, 2, 3, 4},
+                                                    {3, 1, 2, 3, 4},
+                                                    {4, 1, 2, 3, 4}}};
 
   printArray(array);
 
-  printValues(array);
+  int row1 = 1;
+  int row2 = 2;
+
+  for (size_t i = 0; i < size; ++i) {
+    for (size_t j = 0; j < size; ++ j) {
+      if (j == 1) {
+        std::swap(array[i][j], array[i][row2]);
+      }
+    }
+  }
+
+  printArray(array);
   return 0;
 }
