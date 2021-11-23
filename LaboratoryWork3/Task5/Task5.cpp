@@ -50,12 +50,9 @@ void printMinAndMaxIndex(Index &minIndex, Index &maxIndex) {
 
 int main() {
   const size_t size = 6;
-  std::array<std::array<int, size>, size> array = {{{0, 1, 2, 3, 4, 5},
-                                                    {0, 1, 2, 3, 4, 5},
-                                                    {0, 1, 2, 3, 4, 5},
-                                                    {0, 1, 2, 3, 4, 5},
-                                                    {0, 1, 2, 3, 4, 5},
-                                                    {0, 1, 2, 3, 4, 5}}};
+  std::array<std::array<int, size>, size> array = {{{9, 1, 2, 3, 4, -7},
+                                                    {3, 5, 2, 3, -5, 5},
+                                                    {0, 1, 2, 3, 4, 5},}};
 
   printArray(array);
 
