@@ -2,6 +2,11 @@
 #include <array>
 #include <iostream>
 
+/// Надрукувати повідомлення.
+void printMessage(const std::string &text) {
+  std::cout << "messange: " << text << '\n' << '\n';
+}
+
 /// Надрукувати масив.
 template <size_t Size>
 void printArray(const std::array<std::array<int, Size>, Size> &array) {
@@ -17,12 +22,7 @@ void printArray(const std::array<std::array<int, Size>, Size> &array) {
   std::cout << '\n';
 }
 
-/// Надрукувати сповіщення.
-void printNotification(const std::string &text) {
-  std::cout << "notification: " << text << '\n' << '\n';
-}
-
-/// Надрукувати масив.
+/// Відсортувати антидіагональ.
 template <size_t Size>
 void sortAntidiagonal(std::array<std::array<int, Size>, Size> &array) {
   std::array<int, Size> antidiagonal;
@@ -38,16 +38,15 @@ void sortAntidiagonal(std::array<std::array<int, Size>, Size> &array) {
 
 int main() {
   const size_t size = 5;
-  std::array<std::array<int, size>, size> array = {{{0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4}}};
-
+  std::array<std::array<int, size>, size> array{{{0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4}}};
   printArray(array);
-  
-  printNotification("Sort Antidiagonal.");
+
   sortAntidiagonal(array);
+  printMessage("Antidiagonal sorted.");
 
   printArray(array);
   return 0;

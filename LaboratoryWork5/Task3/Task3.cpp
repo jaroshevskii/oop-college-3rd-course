@@ -7,6 +7,16 @@ struct Index {
   size_t j;
 };
 
+/// Надрукувати помилку.
+void printError(const std::string &text) {
+  std::cerr << "error: " << text << '\n' << '\n';
+}
+
+/// Надрукувати повідомлення.
+void printMessage(const std::string &text) {
+  std::cout << "messange: " << text << '\n' << '\n';
+}
+
 /// Отримати максимальне значення масиву.
 Index getMaxIndex(const std::vector<std::vector<int>> &array) {
   Index max{0, 0};
@@ -20,13 +30,8 @@ Index getMaxIndex(const std::vector<std::vector<int>> &array) {
   return max;
 }
 
-/// Надрукувати помилку.
-void printError(const std::string &text) {
-  std::cerr << "error: " << text << '\n' << '\n';
-}
-
 /// Надрукувати масив.
-void printArray(std::vector<std::vector<int>> &array) {
+void printArray(const std::vector<std::vector<int>> &array) {
   std::cout << "Array:\n";
 
   for (const auto &i : array) {
@@ -39,6 +44,14 @@ void printArray(std::vector<std::vector<int>> &array) {
   std::cout << '\n';
 }
 
+/// Надрукувати максимальний індекс.
+void printMaxIndex(const Index &maxIndex) {
+  std::cout << "Max index:\n"
+            << "  i: " << maxIndex.i << '\n'
+            << "  j: " << maxIndex.j << '\n'
+            << '\n';
+}
+
 int main() {
   std::vector<std::vector<int>> array{{0, 1, 2, 3, 4},
                                       {0, 1, 2, 3, 4},
@@ -48,17 +61,17 @@ int main() {
   printArray(array);
 
   const Index maxIndex = getMaxIndex(array);
-  std::cout << "Max index:\n"
-            << "  i: " << maxIndex.i << '\n'
-            << "  j: " << maxIndex.j << '\n'
-            << '\n';
+  printMaxIndex(maxIndex);
 
   // Видалити рядок який знаходиться до рядка з максимальним елементом.
-  if (maxIndex.i > 0)
+  if (maxIndex.i > 0) {
     array.erase(array.begin() + maxIndex.i - 1);
-  else
+    printMessage(
+        "The row before the row with the maximum element has been deleted.");
+  } else {
     printError("The row cannot be delete.");
-  
+  }
+
   // Додати стовпець після стовпця з максимальним елементом.
   for (size_t i = 0; i < array.size(); ++i)
     array[i].insert(array[i].begin() + maxIndex.j + 1, 0);
