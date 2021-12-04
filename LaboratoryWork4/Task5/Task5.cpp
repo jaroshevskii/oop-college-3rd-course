@@ -48,7 +48,8 @@ TriangleHeignts getTriangleHeignts(const Point &point1, const double &side1,
 }
 
 /// Надрукувати висоти трикутника.
-void printTriangleHeignts(const TriangleHeignts &triangleHeignts, const std::string &name) {
+void printTriangleHeignts(const TriangleHeignts &triangleHeignts,
+                          const std::string &name) {
   std::cout << "Heights " << name << ":\n"
             << "  Height 1: " << triangleHeignts.heignts1 << '\n'
             << "  Height 2: " << triangleHeignts.heignts2 << '\n'
@@ -57,10 +58,10 @@ void printTriangleHeignts(const TriangleHeignts &triangleHeignts, const std::str
 }
 
 int main() {
-  const Point a = {-5, -5};
-  const Point b = {-5, 5};
-  const Point c = {5, 5};
-  const Point d = {5, -5};
+  const Point a{-5, -5};
+  const Point b{-5, 5};
+  const Point c{5, 5};
+  const Point d{5, -5};
 
   const double ab = getLenght(a, b);
   const double ac = getLenght(a, c);
@@ -93,7 +94,7 @@ int main() {
             << "Area ABD: " << areaACD << '\n'
             << '\n';
 
-  const Point p = {0, 0};
+  const Point p{0, 0};
 
   const double pa = getLenght(p, a);
   const double pb = getLenght(p, b);
@@ -111,13 +112,13 @@ int main() {
             << "Distance PBC: " << distancePBC << '\n'
             << '\n';
 
-  const TriangleHeignts abc = getTriangleHeignts(a, bc, b, ac, c, ab, areaABC);
+  const TriangleHeignts abc{getTriangleHeignts(a, bc, b, ac, c, ab, areaABC)};
   printTriangleHeignts(abc, "ABC");
-  
-  const TriangleHeignts abd = getTriangleHeignts(a, bd, b, ad, d, ab, areaABD);
+
+  const TriangleHeignts abd{getTriangleHeignts(a, bd, b, ad, d, ab, areaABD)};
   printTriangleHeignts(abd, "ABD");
-  
-  const TriangleHeignts acd = getTriangleHeignts(a, cd, c, ad, d, ac, areaACD);
+
+  const TriangleHeignts acd{getTriangleHeignts(a, cd, c, ad, d, ac, areaACD)};
   printTriangleHeignts(acd, "ACD");
   return 0;
 }
