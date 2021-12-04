@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iostream>
 
+/// Елемент.
 struct Element {
   size_t i;
   size_t j;
@@ -47,11 +48,11 @@ void printMinAndMaxElement(Element &minElement, Element &maxElement) {
             << '\n';
 }
 
-/// Отримати середє арифметичне рядків.
+/// Встановити середє арифметичне рядків.
 template <size_t Size>
-std::array<double, Size> getArithmeticMeanOfRows(
+void setArithmeticMeanOfRows(
+    std::array<double, Size> &arithmeticMeanOfRows,
     const std::array<std::array<double, Size>, Size> &array) {
-  std::array<double, Size> arithmeticMeanOfRows;
   int sumOfRows;
 
   for (size_t i = 0; i < Size; ++i) {
@@ -62,7 +63,6 @@ std::array<double, Size> getArithmeticMeanOfRows(
 
     arithmeticMeanOfRows[i] = sumOfRows / Size;
   }
-  return arithmeticMeanOfRows;
 }
 
 /// Надрукувати середнє арифметичне рядків.
@@ -71,8 +71,8 @@ void printArithmeticMeanOfRows(
     const std::array<double, Size> &arithmeticMeanOfRows) {
   std::cout << "Arithmetic mean of rows:";
 
-  for (const auto &value : arithmeticMeanOfRows)
-    std::cout << ' ' << value;
+  for (const auto &i : arithmeticMeanOfRows)
+    std::cout << ' ' << i;
   std::cout << '\n' << '\n';
 }
 
@@ -114,29 +114,26 @@ double getSumOfElementsUnderMainDiagonal(
 }
 
 int main() {
-  const size_t size = 5;
-  std::array<std::array<double, size>, size> array = {
-      {{0.0, 1.0, 2.0, 3.0, 4.0},
-       {0.0, 1.0, 2.0, 3.0, 4.0},
-       {0.0, 1.0, 2.0, 3.0, 4.0},
-       {0.0, 1.0, 2.0, 3.0, 4.0},
-       {0.0, 1.0, 2.0, 3.0, 4.0}}};
-  
-  //
+  // Встановити точність виведення чисел.
   std::cout << std::fixed << std::setprecision(2);
 
+  const size_t size = 5;
+  std::array<std::array<double, size>, size> array{{{0.0, 1.0, 2.0, 3.0, 4.0},
+                                                    {0.0, 1.0, 2.0, 3.0, 4.0},
+                                                    {0.0, 1.0, 2.0, 3.0, 4.0},
+                                                    {0.0, 1.0, 2.0, 3.0, 4.0},
+                                                    {0.0, 1.0, 2.0, 3.0, 4.0}}};
   printArray(array);
 
-  Element minElement = {0, 0, array[0][0]};
-  Element maxElement = {0, 0, array[0][0]};
+  Element minElement{0, 0, array[0][0]};
+  Element maxElement{0, 0, array[0][0]};
 
   setMinAndMaxElement(minElement, maxElement, array);
-
   printMinAndMaxElement(minElement, maxElement);
 
   // Середнє арифметичне рядків.
-  const std::array<double, size> arithmeticMeanOfRows =
-      getArithmeticMeanOfRows(array);
+  std::array<double, size> arithmeticMeanOfRows{};
+  setArithmeticMeanOfRows(arithmeticMeanOfRows, array);
 
   printArithmeticMeanOfRows(arithmeticMeanOfRows);
 
@@ -144,7 +141,7 @@ int main() {
   const double productOfElementsOfMainDiagonal =
       getProductOfElementsOfMainDiagonal(array);
 
-  std::cout << "The Product of the elements of the main diagonal: "
+  std::cout << "The product of the elements of the main diagonal: "
             << productOfElementsOfMainDiagonal << '\n'
             << '\n';
 
@@ -152,7 +149,7 @@ int main() {
   const double sumOfElementsOfMainDiagonal =
       getSumOfElementsOfMainDiagonal(array);
 
-  std::cout << "The Sum of the elements of the main diagonal: "
+  std::cout << "The sum of the elements of the main diagonal: "
             << sumOfElementsOfMainDiagonal << '\n'
             << '\n';
 

@@ -1,4 +1,10 @@
+#include <array>
 #include <iostream>
+
+/// Надрукувати помилку.
+void printError(const std::string &text) {
+  std::cerr << "error: " << text << '\n' << '\n';
+}
 
 /// Отримати рандомне число.
 int getRandomNumber(const int &min, const int &max) {
@@ -10,13 +16,8 @@ double getRandomNumber(const double &min, const double &max) {
   return rand() * (max - min) / RAND_MAX + min;
 }
 
-/// Надрукувати помилку.
-void printError(const std::string &text) {
-  std::cout << '\n' << "error: " << text << '\n' << '\n';
-}
-
 /// Отримати значення масиву.
-double getArrayValue(const int &index) {
+double getArrayValue(const size_t &index) {
   switch (index) {
   case 0:
     return getRandomNumber(-4, -2);
@@ -61,23 +62,24 @@ double getArrayValue(const int &index) {
 }
 
 /// Надрукувати масив.
-void printArray(const double *array, const int &lenght) {
+template <size_t Size> void printArray(const std::array<double, Size> &array) {
   std::cout << "Array:\n";
 
-  for (int i = 0; i < lenght; ++i)
-    std::cout << "  [" << i << "] = " << array[i] << '\n';
+  for (size_t i = 0; i != Size; ++i)
+    std::cout << "  [" << i << "]: " << array[i] << '\n';
   std::cout << '\n';
 }
 
 int main() {
   srand(static_cast<unsigned int>(time(0)));
 
-  const int lenght = 10;
-  double array[lenght];
+  const size_t size = 10;
+  std::array<double, size> array;
   
-  for (int i = 0; i < lenght; ++i)
+  // Встановити масив.
+  for (size_t i = 0; i != size; ++i)
     array[i] = getArrayValue(i);
 
-  printArray(array, lenght);
+  printArray(array);
   return 0;
 }
