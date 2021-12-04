@@ -1,6 +1,16 @@
 #include <array>
 #include <iostream>
 
+/// Надрукувати помилку.
+void printError(const std::string &text) {
+  std::cerr << "error: " << text << '\n' << '\n';
+}
+
+/// Надрукувати повідомлення.
+void printMessage(const std::string &text) {
+  std::cout << "messange: " << text << '\n' << '\n';
+}
+
 /// Надрукувати масив.
 template <size_t Size>
 void printArray(const std::array<std::array<int, Size>, Size> &array) {
@@ -17,64 +27,55 @@ void printArray(const std::array<std::array<int, Size>, Size> &array) {
 }
 
 /// Надрукувати совбець.
-template <size_t Size>
-void printColumn(const std::array<int, Size> &column) {
+template <size_t Size> void printColumn(const std::array<int, Size> &column) {
   std::cout << "Column:";
 
-  for (const auto &value : column)
-    std::cout << ' ' << value;
+  for (const auto &i : column)
+    std::cout << ' ' << i;
   std::cout << '\n' << '\n';
 }
 
-/// Надрукувати помилку.
-void printError(const std::string &text) {
-  std::cout << '\n' << "error: " << text << '\n' << '\n';
-}
-
-/// Отримати індекс.
-size_t getIndex(const size_t &min, const size_t &max) {
-  size_t index;
+/// Отримати рядок.
+size_t getRow(const size_t &min, const size_t &max) {
+  std::cout << "// Enter the row.\n";
+  size_t row;
 
   while (true) {
     std::cout << "> ";
-    std::cin >> index;
+    std::cin >> row;
+    std::cout << '\n';
 
-    if (index >= min && index <= max)
-      return index;
-    if (index < min)
-      printError("The index is too small.");
-    if (index > max)
-      printError("The index is too large.");
+    if (row >= min && row <= max)
+      return row;
+
+    printError("The row is incorrect.");
   }
 }
 
 /// Змінити стовбець.
 template <size_t Size>
 void changeColumn(std::array<std::array<int, Size>, Size> &array,
-                  const std::array<int, Size> &column, const size_t &index) {
+                  const std::array<int, Size> &column, const size_t &row) {
   for (size_t i = 0; i != Size; ++i)
-    array[i][index] = column[i];
+    array[i][row] = column[i];
 }
 
 int main() {
   const size_t size = 5;
-  std::array<std::array<int, size>, size> array = {{{0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4},
-                                                    {0, 1, 2, 3, 4}}};
-
+  std::array<std::array<int, size>, size> array{{{0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4},
+                                                 {0, 1, 2, 3, 4}}};
   printArray(array);
 
-  const std::array<int, size> column = {6, 6, 6, 6, 6};
-
+  const std::array<int, size> column{6, 6, 6, 6, 6};
   printColumn(column);
 
-  std::cout << "// Enter the index.\n";
-  const size_t index = getIndex(0, size - 1);
-  std::cout << '\n';
+  const size_t row = getRow(0, size - 1);
 
-  changeColumn(array, column, index);
+  changeColumn(array, column, row);
+  printMessage("Column changed.");
 
   printArray(array);
   return 0;

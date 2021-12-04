@@ -103,7 +103,7 @@ int main() {
   printText(text);
 
   // Отримати найдовше слово.
-  std::string longestWord = getLongestWord(text);
+  const std::string longestWord = getLongestWord(text);
   printLongestWord(longestWord);
 
   // Видалити слова, які містять непарну кількість приголосних.

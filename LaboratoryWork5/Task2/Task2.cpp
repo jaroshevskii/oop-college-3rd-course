@@ -8,6 +8,7 @@ int main() {
                                                  {0, 1, 2, 3, 4},
                                                  {0, 1, 2, 3, 4},
                                                  {0, 1, 2, 3, 4}}};
+
   std::cout << "Array:\n";
 
   for (size_t i = 0; i < size; ++i) {
