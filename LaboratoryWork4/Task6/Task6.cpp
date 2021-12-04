@@ -21,8 +21,7 @@ void printArray(const std::array<int, Size> &array) {
 
 int main() {
   const size_t size = 10;
-  std::array<int, size> array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-
+  std::array<int, size> array{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
   printArray(array);
   return 0;
 }
