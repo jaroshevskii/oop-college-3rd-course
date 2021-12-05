@@ -32,6 +32,6 @@ int main() {
       std::cout << ' ' << array[i][i];
     }
   }
-  std::cout << '\n' << '\n';
+  std::cout << "\n\n";
   return 0;
 }
