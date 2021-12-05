@@ -1,25 +1,11 @@
 #include <iostream>
 
-/// Надрукувати помилку.
-void printError(const std::string &text) {
-  std::cout << '\n' << "error: " << text << '\n' << '\n';
-}
-
 /// Отримати ціле число.
-int getInt(const int &min, const int &max) {
-  int value;
-
-  while (true) {
-    std::cout << "> ";
-    std::cin >> value;
-
-    if (value >= min && value <= max)
-      return value;
-    if (value < min)
-      printError("The value is too small.");
-    if (value > max)
-      printError("The value is too large.");
-  }
+int getNumber() {
+  std::cout << "> ";
+  int number;
+  std::cin >> number;
+  return number;
 }
 
 /// Отримати суму цифр.
@@ -36,16 +22,15 @@ int getSumOfDigits(int number) {
 /// Отримати найбільше число за сумою цифр.
 int getLargestNumberBySumOfDigits() {
   std::cout << "// Enter integers (use 0 to end the entry).\n";
-  std::cout << '\n';
 
   int largestNumber;
-  int sumOfDigitsOfLargestNumber = 0;
+  int sumOfDigitsOfLargestNumber;
 
   int number;
-  int sumOfDigits = 0;
+  int sumOfDigits;
 
   while (true) {
-    number = getInt(INT32_MIN, INT32_MAX);
+    number = getNumber();
 
     if (number == 0) {
       std::cout << '\n';
@@ -53,7 +38,7 @@ int getLargestNumberBySumOfDigits() {
     }
 
     sumOfDigits = getSumOfDigits(number);
-    
+
     if (sumOfDigits > sumOfDigitsOfLargestNumber) {
       sumOfDigitsOfLargestNumber = sumOfDigits;
       largestNumber = number;
@@ -62,10 +47,10 @@ int getLargestNumberBySumOfDigits() {
 }
 
 int main() {
-  int largestNumberBySumOfDigits = getLargestNumberBySumOfDigits();
+  // Найбільше число за сумою ціфр.
+  const int largestNumberBySumOfDigits = getLargestNumberBySumOfDigits();
 
-  std::cout << "Largest number by sum of digits: "
-            << largestNumberBySumOfDigits << '\n';
-  std::cout << '\n';
+  std::cout << "Largest number by sum of digits: " << largestNumberBySumOfDigits
+            << "\n\n";
   return 0;
 }

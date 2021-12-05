@@ -3,12 +3,12 @@
 
 /// Надрукувати помилку.
 void printError(const std::string &text) {
-  std::cerr << "error: " << text << '\n' << '\n';
+  std::cerr << "error: " << text << "\n\n";
 }
 
 /// Надрукувати повідомлення.
 void printMessage(const std::string &text) {
-  std::cout << "messange: " << text << '\n' << '\n';
+  std::cout << "messange: " << text << "\n\n";
 }
 
 /// Надрукувати масив.
@@ -32,7 +32,7 @@ template <size_t Size> void printColumn(const std::array<int, Size> &column) {
 
   for (const auto &i : column)
     std::cout << ' ' << i;
-  std::cout << '\n' << '\n';
+  std::cout << "\n\n";
 }
 
 /// Отримати рядок.

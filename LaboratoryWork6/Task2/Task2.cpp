@@ -12,7 +12,7 @@ void replaceUppercaseLettersWithLowercase(std::string &text) {
 
 /// Надрукувати текст.
 void printText(const std::string &text) {
-  std::cout << "Text: " << text << '\n' << '\n';
+  std::cout << "Text: " << text << "\n\n";
 }
 
 /// Отримати найдовше слово.
@@ -33,7 +33,7 @@ std::string getLongestWord(const std::string &text) {
 
 /// Надрукувати найдовше слово.
 void printLongestWord(const std::string &longestWord) {
-  std::cout << "Longest word: " << longestWord << '\n' << '\n';
+  std::cout << "Longest word: " << longestWord << "\n\n";
 }
 
 /// Є приголосною.

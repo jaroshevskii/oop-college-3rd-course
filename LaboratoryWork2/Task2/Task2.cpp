@@ -1,24 +1,25 @@
+#include <array>
 #include <iostream>
 
 /// Надрукувати помилку.
 void printError(const std::string &text) {
-  std::cout << '\n' << "error: " << text << '\n' << '\n';
+  std::cerr << "error: " << text << "\n\n";
 }
 
 /// Отримати ціле число.
-int getInt(const int &min, const int &max) {
-  int value;
+int getNumber(const int &min, const int &max) {
+  int number;
 
   while (true) {
     std::cout << "> ";
-    std::cin >> value;
+    std::cin >> number;
 
-    if (value >= min && value <= max)
-      return value;
-    if (value < min)
-      printError("The value is too small.");
-    if (value > max)
-      printError("The value is too large.");
+    if (number >= min && number <= max)
+      return number;
+    if (number < min)
+      printError("The number is too small.");
+    if (number > max)
+      printError("The number is too large.");
   }
 }
 
@@ -28,72 +29,71 @@ int getRandomNumber(const int &min, const int &max) {
 }
 
 /// Надрукувати масив.
-void printArray(const int *array, const int &lenght) {
-  std::cout << "Array:\n";
+template <size_t Size> void printArray(const std::array<int, Size> &array) {
+  std::cout << "Array:";
 
-  for (int i = 0; i < lenght; ++i)
-    std::cout << "  [" << i << "] = " << array[i] << '\n';
-  std::cout << '\n';
+  for (const auto &i : array)
+    std::cout << ' ' << i;
+  std::cout << "\n\n";
 }
 
-/// Отримати індекс мінімального значення масиву за модулем.
-int getIndexOfMinValueOfArrayModulo(const int *array, const int &lenght) {
-  int minValue = abs(array[0]);
-  int minIndex = 0;
+/// Отримати індекс мінімального числа за модулем.
+template <size_t Size>
+size_t getIndexOfMinNumberPerModule(const std::array<int, Size> &array) {
+  size_t minIndex = 0;
 
-  for (int i = 1; i < lenght; ++i) {
-    if (abs(array[i]) < minValue) {
-      minValue = abs(array[i]);
+  for (size_t i = 1; i != Size; ++i) {
+    if (abs(array[i]) < abs(array[minIndex]))
       minIndex = i;
-    }
   }
   return minIndex;
 }
 
-/// Отримати суму модулів значень масиву.
-int getSumOfModulesOfValuesOfArray(const int *array, const int &lenght) {
-  int sumOfModule = 0;
-  bool isSum = false;
+/// Отримати суму модулів чисел, розташованих після першого від'ємного числа.
+template <size_t Size>
+int getSumOfModulesOfNumberLocatedAfterFirstNegativeNumber(
+    const std::array<int, Size> &array) {
+  bool isFirstNegativeNumber = false;
+  int sum = 0;
 
-  for (int i = 0; i < lenght; ++i) {
-    if (isSum)
-      sumOfModule += abs(array[i]);
-    else if (array[i] < 0)
-      isSum = true;
+  for (const auto &number : array) {
+    if (isFirstNegativeNumber)
+      sum += abs(number);
+    else if (number < 0)
+      isFirstNegativeNumber = true;
   }
-  return sumOfModule;
+  return sum;
 }
 
 int main() {
   srand(static_cast<unsigned int>(time(0)));
 
-  std::cout << "// Enter the min and max values to create random numbers.\n";
-  const int minRandom = getInt(INT16_MIN, INT16_MAX);
-  const int maxRandom = getInt(minRandom, INT16_MAX);
+  std::cout << "// Enter the min and max numbers to create random numbers.\n";
+  const int minRandom = getNumber(INT_MIN, INT_MAX);
+  const int maxRandom = getNumber(minRandom, INT_MAX);
   std::cout << '\n';
 
-  const int lenght = 10;
-  int array[lenght];
+  const size_t size = 10;
+  std::array<int, size> array;
 
-  for (int i = 0; i < lenght; ++i)
-    array[i] = getRandomNumber(minRandom, maxRandom);
+  // Встановити масив.
+  for (auto &i : array)
+    i = getRandomNumber(minRandom, maxRandom);
 
-  printArray(array, lenght);
+  printArray(array);
 
-  // Індекс мінімального значання масиву за модулем.
-  const int indexOfMinValueOfArrayModulo =
-      getIndexOfMinValueOfArrayModulo(array, lenght);
+  // Індекс мінімального значення за модулем.
+  const size_t indexOfMinNumberPerModule = getIndexOfMinNumberPerModule(array);
 
-  std::cout << "The index of the minimum value of the array modulo: "
-            << indexOfMinValueOfArrayModulo << '\n'
-            << '\n';
+  std::cout << "Index of minimum value per module: "
+            << indexOfMinNumberPerModule << "\n\n";
 
-  // Cума модулів значень масиву.
-  const int sumOfModulesOfValuesOfArray =
-      getSumOfModulesOfValuesOfArray(array, lenght);
+  // Сума модулів чисел, розташованих після першого від'ємного числа.
+  const int sumOfModulesOfNumberLocatedAfterFirstNegativeNumber =
+      getSumOfModulesOfNumberLocatedAfterFirstNegativeNumber(array);
 
-  std::cout << "The sum of the modules of the values of the array: "
-            << sumOfModulesOfValuesOfArray << '\n'
-            << '\n';
+  std::cout << "The sum of the modules of the numbers after the first negative "
+               "number: "
+            << sumOfModulesOfNumberLocatedAfterFirstNegativeNumber << "\n\n";
   return 0;
 }
