@@ -21,7 +21,7 @@ void printBuffer(const std::array<int, Size> &buffer) {
 
   for (const auto &i : buffer)
     std::cout << ' ' << i;
-  std::cout << '\n' << '\n';
+  std::cout << "\n\n";
 }
 
 int main() {
