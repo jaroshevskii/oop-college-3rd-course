@@ -16,12 +16,12 @@ struct Movie {
 
 /// Надрукувати помилку.
 void printError(const std::string &text) {
-  std::cerr << "error: " << text << '\n' << '\n';
+  std::cerr << "error: " << text << "\n\n";
 }
 
 /// Надрукувати повідомлення.
 void printMessage(const std::string &text) {
-  std::cout << "messange: " << text << '\n' << '\n';
+  std::cout << "messange: " << text << "\n\n";
 }
 
 /// Встановити базуданих фільмів.
@@ -135,7 +135,7 @@ void printMovieDatabase(const std::vector<Movie> &movieDatabase) {
     printMovie(movie);
   }
 
-  std::cout << std::string(48, '-') << '\n' << '\n';
+  std::cout << std::string(48, '-') << "\n\n";
 }
 
 /// Знайти фільм.
