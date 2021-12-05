@@ -9,12 +9,12 @@ struct Index {
 
 /// Надрукувати помилку.
 void printError(const std::string &text) {
-  std::cerr << "error: " << text << '\n' << '\n';
+  std::cerr << "error: " << text << "\n\n";
 }
 
 /// Надрукувати повідомлення.
 void printMessage(const std::string &text) {
-  std::cout << "messange: " << text << '\n' << '\n';
+  std::cout << "messange: " << text << "\n\n";
 }
 
 /// Отримати максимальне значення масиву.

@@ -4,7 +4,7 @@
 
 /// Надрукувати повідомлення.
 void printMessage(const std::string &text) {
-  std::cout << "messange: " << text << '\n' << '\n';
+  std::cout << "messange: " << text << "\n\n";
 }
 
 /// Надрукувати масив.

@@ -30,7 +30,7 @@ void deleteWordsThatContainAnEvenNumberOfLetters(std::string &text) {
 
 /// Надрукувати текст.
 void printText(const std::string &text) {
-  std::cout << "Text: " << text << '\n' << '\n';
+  std::cout << "Text: " << text << "\n\n";
 }
 
 int main() {

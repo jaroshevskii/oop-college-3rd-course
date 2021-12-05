@@ -1,4 +1,10 @@
+#include <array>
 #include <iostream>
+
+/// Надрукувати повідомлення.
+void printMessage(const std::string &text) {
+  std::cout << "messange: " << text << "\n\n";
+}
 
 /// Отримати рандомне число.
 int getRandomNumber(const int &min, const int &max) {
@@ -6,74 +12,48 @@ int getRandomNumber(const int &min, const int &max) {
 }
 
 /// Надрукувати масив.
-void printArray(const int *array, const int &lenght) {
-  std::cout << "Array:\n";
+template <size_t Size> void printArray(const std::array<int, Size> &array) {
+  std::cout << "Array:";
 
-  for (int i = 0; i < lenght; ++i)
-    std::cout << "  [" << i << "] = " << array[i] << '\n';
-  std::cout << '\n';
-}
-
-/// Надрукувати сповіщення.
-void printNotification(const std::string &text) {
-  std::cout << "notification: " << text << '\n' << '\n';
-}
-
-/// Отримати мінімальний індекс.
-int getMinIndex(const int *array, const int &lenght) {
-  int minValue = array[0];
-  int minIndex = 0;
-
-  for (int i = 1; i < lenght; ++i) {
-    if (array[i] < minValue) {
-      minValue = array[i];
-      minIndex = i;
-    }
-  }
-  return minIndex;
-}
-
-/// Отримати максимальний індекс.
-int getMaxIndex(const int *array, const int &lenght) {
-  int maxValue = array[0];
-  int maxIndex = 0;
-
-  for (int i = 1; i < lenght; ++i) {
-    if (array[i] > maxValue) {
-      maxValue = array[i];
-      maxIndex = i;
-    }
-  }
-  return maxIndex;
+  for (const auto &i : array)
+    std::cout << ' ' << i;
+  std::cout << "\n\n";
 }
 
 int main() {
   srand(static_cast<unsigned int>(time(0)));
 
-  const int lenght = 12;
-  int array[lenght];
+  const size_t size = 10;
+  std::array<int, size> array;
 
-  for (int i = 0; i < lenght; ++i)
-    array[i] = getRandomNumber(INT8_MIN, INT8_MAX);
+  // Встановити масив.
+  for (auto &i : array)
+    i = getRandomNumber(INT8_MIN, INT8_MAX);
 
-  printArray(array, lenght);
+  printArray(array);
 
-  const int minIndex = getMinIndex(array, lenght);
-  const int maxIndex = getMaxIndex(array, lenght);
+  int minIndex = 0;
+  int maxIndex = 0;
 
+  // Встановити мінімальнй та максимальний індекс.
+  for (size_t i = 1; i != size; ++i) {
+    if (array[i] < array[minIndex])
+      minIndex = i;
+    if (array[i] > array[maxIndex])
+      maxIndex = i;
+  }
+  
   std::cout << "Min index: " << minIndex << '\n'
-            << "Max index: " << maxIndex << '\n'
-            << '\n';
+            << "Max index: " << maxIndex << "\n\n";
 
-  if (array[minIndex] != array[maxIndex]) {
-    printNotification("Swap the min and max values of the array.");
-
-    std::swap(array[minIndex], array[maxIndex]);
+  if (array[minIndex] == array[maxIndex]) {
+    printMessage("Swap min and max number not need. All numbers are the same.");
   } else {
-    printNotification(
-        "Swap is not needed. The values of the array are the same.");
+    std::swap(array[minIndex], array[maxIndex]);
+
+    printMessage("The min and max number are swapped.");
   }
 
-  printArray(array, lenght);
+  printArray(array);
   return 0;
 }
