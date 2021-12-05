@@ -3,7 +3,7 @@
 
 /// Надрукувати помилку.
 void printError(const std::string &text) {
-  std::cerr << "error: " << text << '\n' << '\n';
+  std::cerr << "error: " << text << "\n\n";
 }
 
 /// Отримати рандомне число.

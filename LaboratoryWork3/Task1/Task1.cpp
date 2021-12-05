@@ -73,7 +73,7 @@ void printArithmeticMeanOfRows(
 
   for (const auto &i : arithmeticMeanOfRows)
     std::cout << ' ' << i;
-  std::cout << '\n' << '\n';
+  std::cout << "\n\n";
 }
 
 /// Отримати добуток елементів головної діагоналі.

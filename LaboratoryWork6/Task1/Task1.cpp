@@ -9,7 +9,7 @@ void printNumbers(const std::vector<int> &numbers) {
 
   for (const auto &i : numbers)
     std::cout << ' ' << i;
-  std::cout << '\n' << '\n';
+  std::cout << "\n\n";
 }
 
 int main() {

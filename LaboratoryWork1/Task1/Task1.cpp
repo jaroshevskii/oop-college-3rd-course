@@ -1,19 +1,19 @@
 #include <iostream>
 
-/// Отимати обернене число.
-int getInvertNumber(int number) {
-  int invertNumber = 0;
+/// Отимати перевернене число.
+int getReverseNumber(int number) {
+  int reverseNumber = 0;
 
   while (number) {
-    invertNumber = invertNumber * 10 + number % 10;
+    reverseNumber = reverseNumber * 10 + number % 10;
     number /= 10;
   }
-  return invertNumber;
+  return reverseNumber;
 }
 
 /// Є паліндромом.
 bool isPalindrome(const int &number) {
-  return number == getInvertNumber(number);
+  return number == getReverseNumber(number);
 }
 
 int main() {
@@ -25,7 +25,6 @@ int main() {
     }
   }
 
-  std::cout << std::string(32, '-') << '\n';
-  std::cout << '\n';
+  std::cout << std::string(32, '-') << "\n\n";
   return 0;
 }
