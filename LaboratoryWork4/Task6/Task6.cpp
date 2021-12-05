@@ -16,7 +16,7 @@ void printArray(const std::array<int, Size> &array) {
   std::cout << "Array:";
 
   printElement(array, 0);
-  std::cout << '\n' << '\n';
+  std::cout << "\n\n";
 }
 
 int main() {
