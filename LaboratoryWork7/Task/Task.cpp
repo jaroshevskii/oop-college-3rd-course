@@ -68,32 +68,32 @@ void saveMovieDatabase(const std::vector<Movie> &movieDatabase) {
 Movie getMovie() {
   Movie movie;
 
-  std::cout << "// Enter movie name.\n"
+  std::cout << "Enter movie name.\n"
             << "> ";
   std::getline(std::cin, movie.name);
   std::cout << '\n';
 
-  std::cout << "// Enter movie director.\n"
+  std::cout << "Enter movie director.\n"
             << "> ";
   std::getline(std::cin, movie.director);
   std::cout << '\n';
 
-  std::cout << "// Enter movie realese date.\n"
+  std::cout << "Enter movie realese date.\n"
             << "> ";
   std::getline(std::cin, movie.releaseDate);
   std::cout << '\n';
 
-  std::cout << "// Enter movie country.\n"
+  std::cout << "Enter movie country.\n"
             << "> ";
   std::getline(std::cin, movie.country);
   std::cout << '\n';
 
-  std::cout << "// Enter movie dudget (milion).\n"
+  std::cout << "Enter movie dudget (milion).\n"
             << "> ";
   std::cin >> movie.dudget;
   std::cout << '\n';
 
-  std::cout << "// Enter movie box office (milion).\n"
+  std::cout << "Enter movie box office (milion).\n"
             << "> ";
   std::cin >> movie.boxOffice;
   std::cout << '\n';
@@ -118,8 +118,8 @@ void printMovie(const Movie &movie) {
             << "  Country: " << movie.country << '\n'
             << "  Dudget: $" << movie.dudget << " (milion)\n"
             << "  Box office: $" << movie.boxOffice << " (milion)\n"
-            << "  Profit: $" << movie.boxOffice - movie.dudget << " (milion)\n"
-            << '\n';
+            << "  Profit: $" << movie.boxOffice - movie.dudget
+            << " (milion)\n\n";
 }
 
 /// Надрукувати базу даних фільмів.
@@ -140,7 +140,7 @@ void printMovieDatabase(const std::vector<Movie> &movieDatabase) {
 
 /// Знайти фільм.
 void searchMovie(const std::vector<Movie> &movieDatabase) {
-  std::cout << "// Enter movie name for search.\n"
+  std::cout << "Enter movie name for search.\n"
             << "> ";
   std::string movieName;
   std::getline(std::cin, movieName);
@@ -158,7 +158,7 @@ void searchMovie(const std::vector<Movie> &movieDatabase) {
 
 /// Видалити фільм.
 void deleteMovie(std::vector<Movie> &movieDatabase) {
-  std::cout << "// Enter movie name for delete.\n"
+  std::cout << "Enter movie name for delete.\n"
             << "> ";
   std::string movieName;
   std::getline(std::cin, movieName);
@@ -183,8 +183,7 @@ unsigned getMenuIndex(const int &minIndex, const int &maxIndex) {
             << "  3. Delete movie\n"
             << "  4. Search movie\n"
             << "  5. Save changes\n"
-            << "  6. Exit\n"
-            << '\n';
+            << "  6. Exit\n\n";
 
   unsigned menuIndex;
 
@@ -205,7 +204,7 @@ unsigned getMenuIndex(const int &minIndex, const int &maxIndex) {
 int main() {
   std::vector<Movie> movieDatabase;
   setMovieDatabase(movieDatabase);
-  
+
   while (true) {
     switch (getMenuIndex(1, 10)) {
     case 1:
