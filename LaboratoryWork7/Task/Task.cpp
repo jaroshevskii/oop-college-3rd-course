@@ -129,7 +129,7 @@ void printMovieDatabase(const std::vector<Movie> &movieDatabase) {
     return;
   }
 
-  for (const auto movie : movieDatabase) {
+  for (const auto &movie : movieDatabase) {
     std::cout << std::string(48, '-') << '\n';
 
     printMovie(movie);
