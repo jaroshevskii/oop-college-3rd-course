@@ -44,8 +44,7 @@ void printMinAndMaxElement(Element &minElement, Element &maxElement) {
   std::cout << "Min element[" << minElement.i << "][" << minElement.j
             << "]: " << minElement.value << '\n'
             << "Max element[" << maxElement.i << "][" << maxElement.j
-            << "]: " << maxElement.value << '\n'
-            << '\n';
+            << "]: " << maxElement.value << "\n\n";
 }
 
 /// Встановити середє арифметичне рядків.
@@ -142,23 +141,20 @@ int main() {
       getProductOfElementsOfMainDiagonal(array);
 
   std::cout << "The product of the elements of the main diagonal: "
-            << productOfElementsOfMainDiagonal << '\n'
-            << '\n';
+            << productOfElementsOfMainDiagonal << "\n\n";
 
   // Сума елементів головної діагоналі.
   const double sumOfElementsOfMainDiagonal =
       getSumOfElementsOfMainDiagonal(array);
 
   std::cout << "The sum of the elements of the main diagonal: "
-            << sumOfElementsOfMainDiagonal << '\n'
-            << '\n';
+            << sumOfElementsOfMainDiagonal << "\n\n";
 
   // Сума елеметнтів під головною діагоналлю.
   const double sumOfElementsUnderMainDiagonal =
       getSumOfElementsUnderMainDiagonal(array);
 
   std::cout << "The sum of the elements under the main diagonal: "
-            << sumOfElementsUnderMainDiagonal << '\n'
-            << '\n';
+            << sumOfElementsUnderMainDiagonal << "\n\n";
   return 0;
 }
