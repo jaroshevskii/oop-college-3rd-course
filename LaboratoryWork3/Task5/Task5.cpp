@@ -45,8 +45,7 @@ void setMinAndMaxIndex(Index &minIndex, Index &maxIndex,
 /// Надрукувати мінімальний та максимальний індекс.
 void printMinAndMaxIndex(Index &minIndex, Index &maxIndex) {
   std::cout << "Min index[" << minIndex.i << "][" << minIndex.j << "]\n"
-            << "Max index[" << maxIndex.i << "][" << maxIndex.j << "]\n"
-            << '\n';
+            << "Max index[" << maxIndex.i << "][" << maxIndex.j << "]\n\n";
 }
 
 int main() {

@@ -53,8 +53,7 @@ void printTriangleHeignts(const TriangleHeignts &triangleHeignts,
   std::cout << "Heights " << name << ":\n"
             << "  Height 1: " << triangleHeignts.heignts1 << '\n'
             << "  Height 2: " << triangleHeignts.heignts2 << '\n'
-            << "  Height 3: " << triangleHeignts.heignts3 << '\n'
-            << '\n';
+            << "  Height 3: " << triangleHeignts.heignts3 << "\n\n";
 }
 
 int main() {
@@ -69,8 +68,7 @@ int main() {
 
   std::cout << "AB: " << ab << '\n'
             << "AC: " << ac << '\n'
-            << "AD: " << ad << '\n'
-            << '\n';
+            << "AD: " << ad << "\n\n";
 
   const double bc = getLenght(b, c);
   const double bd = getLenght(b, d);
@@ -82,8 +80,7 @@ int main() {
 
   std::cout << "Perimeter ABC: " << perimeterABC << '\n'
             << "Perimeter ABD: " << perimeterABD << '\n'
-            << "Perimeter ABD: " << perimeterACD << '\n'
-            << '\n';
+            << "Perimeter ABD: " << perimeterACD << "\n\n";
 
   const double areaABC = getArea(ab, bc, ac, perimeterABC / 2);
   const double areaABD = getArea(ab, bd, ad, perimeterABD / 2);
@@ -91,8 +88,7 @@ int main() {
 
   std::cout << "Area ABC: " << areaABC << '\n'
             << "Area ABD: " << areaABD << '\n'
-            << "Area ABD: " << areaACD << '\n'
-            << '\n';
+            << "Area ABD: " << areaACD << "\n\n";
 
   const Point p{0, 0};
 
@@ -109,8 +105,7 @@ int main() {
 
   std::cout << "Distance PAB: " << distancePAB << '\n'
             << "Distance PAC: " << distancePAC << '\n'
-            << "Distance PBC: " << distancePBC << '\n'
-            << '\n';
+            << "Distance PBC: " << distancePBC << "\n\n";
 
   const TriangleHeignts abc{getTriangleHeignts(a, bc, b, ac, c, ab, areaABC)};
   printTriangleHeignts(abc, "ABC");
