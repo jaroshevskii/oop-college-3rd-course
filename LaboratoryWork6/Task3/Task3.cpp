@@ -34,7 +34,7 @@ void printText(const std::string &text) {
 }
 
 int main() {
-  std::cout << "// Enter text.\n"
+  std::cout << "Enter text.\n"
             << "> ";
   std::string text;
   std::getline(std::cin, text);

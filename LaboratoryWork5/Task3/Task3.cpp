@@ -48,8 +48,7 @@ void printArray(const std::vector<std::vector<int>> &array) {
 void printMaxIndex(const Index &maxIndex) {
   std::cout << "Max index:\n"
             << "  i: " << maxIndex.i << '\n'
-            << "  j: " << maxIndex.j << '\n'
-            << '\n';
+            << "  j: " << maxIndex.j << "\n\n";
 }
 
 int main() {
