@@ -1,7 +1,7 @@
 #include <iostream>
 
 /// Отримати ціле число.
-int getNumber() {
+int getInt() {
   std::cout << "> ";
   int number;
   std::cin >> number;
@@ -21,7 +21,7 @@ int getSumOfDigits(int number) {
 
 /// Отримати найбільше число за сумою цифр.
 int getLargestNumberBySumOfDigits() {
-  std::cout << "// Enter integers (use 0 to end the entry).\n";
+  std::cout << "Enter integers (use 0 to end the entry).\n";
 
   int largestNumber;
   int sumOfDigitsOfLargestNumber;
@@ -30,7 +30,7 @@ int getLargestNumberBySumOfDigits() {
   int sumOfDigits;
 
   while (true) {
-    number = getNumber();
+    number = getInt();
 
     if (number == 0) {
       std::cout << '\n';

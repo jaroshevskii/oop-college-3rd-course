@@ -37,7 +37,7 @@ template <size_t Size> void printColumn(const std::array<int, Size> &column) {
 
 /// Отримати рядок.
 size_t getRow(const size_t &min, const size_t &max) {
-  std::cout << "// Enter the row.\n";
+  std::cout << "Enter the row.\n";
   size_t row;
 
   while (true) {

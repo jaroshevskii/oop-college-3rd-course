@@ -68,7 +68,7 @@ int getSumOfModulesOfNumberLocatedAfterFirstNegativeNumber(
 int main() {
   srand(static_cast<unsigned int>(time(0)));
 
-  std::cout << "// Enter the min and max numbers to create random numbers.\n";
+  std::cout << "Enter the min and max numbers to create random numbers.\n";
   const int minRandom = getNumber(INT_MIN, INT_MAX);
   const int maxRandom = getNumber(minRandom, INT_MAX);
   std::cout << '\n';
