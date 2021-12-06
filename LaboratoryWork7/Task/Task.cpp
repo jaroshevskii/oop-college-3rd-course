@@ -206,7 +206,7 @@ int main() {
   setMovieDatabase(movieDatabase);
 
   while (true) {
-    switch (getMenuIndex(1, 10)) {
+    switch (getMenuIndex(1, 6)) {
     case 1:
       printMovieDatabase(movieDatabase);
       break;
