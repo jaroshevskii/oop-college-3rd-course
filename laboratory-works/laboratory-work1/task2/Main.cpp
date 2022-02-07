@@ -1,12 +1,5 @@
 #include <iostream>
 
-int getNumber() {
-  std::cout << "> ";
-  int number;
-  std::cin >> number;
-  return 0;
-}
-
 int getSumOfDigits(int number) {
   int sumOfDigits = 0;
 
@@ -27,7 +20,9 @@ int getLargestNumberBySumOfDigits() {
   int sumOfDigits;
 
   while (true) {
-    number = getNumber();
+    std::cout << "> ";
+    int number;
+    std::cin >> number;
 
     if (number == 0) {
       std::cout << '\n';
