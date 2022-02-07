@@ -1,4 +1,4 @@
-# Object-oriented Programming
+# Object-Oriented Programming
 
 Repository with all works for the 3rd year of college.
 
