@@ -1,4 +1,4 @@
-# College 3rd year
+# Object-oriented Programming
 
 Repository with all works for the 3rd year of college.
 
