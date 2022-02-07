@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.5)
 
 # Set project name
-project(PracticalWork1)
+project(LaboratorylWork1)
 
 # Add sub directories
 add_subdirectory(task1)

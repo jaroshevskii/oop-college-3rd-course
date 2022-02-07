@@ -5,9 +5,9 @@ cmake_minimum_required(VERSION 3.5)
 project(ObjectOrientedProgramming)
 
 # Add sub directories
-add_subdirectory(practical-works)
+add_subdirectory(laboratory-works)
 
 add_custom_target(${PROJECT_NAME})
 add_dependencies(${PROJECT_NAME}
-  PracticalWork1
+  LaboratorylWork1
 )

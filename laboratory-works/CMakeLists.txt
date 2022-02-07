@@ -1,2 +1,2 @@
 # Add sub directories
-add_subdirectory(practical-work1)
+add_subdirectory(laboratory-work1)
