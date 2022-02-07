@@ -1,18 +1,12 @@
 # Temp folder
-Temp/*
+temp/*
 
-# Files built by Visual Studio
-*.ilk
-*.obj
-*.pdb
+# Build folder
+build/*
 
 # VS Code files for those working on multiple tools
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# Executables
-*.out
-*.exe
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
