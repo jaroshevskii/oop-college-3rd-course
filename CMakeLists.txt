@@ -10,4 +10,5 @@ add_subdirectory(laboratory-works)
 add_custom_target(${PROJECT_NAME})
 add_dependencies(${PROJECT_NAME}
   LaboratorylWork1
+  LaboratorylWork2
 )

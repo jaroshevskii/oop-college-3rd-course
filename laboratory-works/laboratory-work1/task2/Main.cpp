@@ -1,6 +1,5 @@
 #include <iostream>
 
-<<<<<<< HEAD
 /// Returns the number entered by the user.
 int getNumber() {
   std::cout << "> ";
@@ -10,8 +9,6 @@ int getNumber() {
 }
 
 /// Returns the sum of the digits of a number.
-=======
->>>>>>> 5069c341d73013642f5cede42a65c65262d07446
 int getSumOfDigits(int number) {
   int sumOfDigits = 0;
 
