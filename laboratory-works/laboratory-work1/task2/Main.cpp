@@ -1,12 +1,14 @@
 #include <iostream>
 
+/// Returns the number entered by the user.
 int getNumber() {
   std::cout << "> ";
   int number;
   std::cin >> number;
-  return 0;
+  return number;
 }
 
+/// Returns the sum of the digits of a number.
 int getSumOfDigits(int number) {
   int sumOfDigits = 0;
 
@@ -17,6 +19,7 @@ int getSumOfDigits(int number) {
   return sumOfDigits;
 }
 
+/// Returns the largest number by the sum of digits.
 int getLargestNumberBySumOfDigits() {
   std::cout << "Enter integers (use 0 to end the entry).\n";
 
@@ -45,7 +48,7 @@ int getLargestNumberBySumOfDigits() {
 
 int main() {
   const int largestNumberBySumOfDigits = getLargestNumberBySumOfDigits();
-  std::cout << "Largest number by sum of digits: " << largestNumberBySumOfDigits
-            << "\n\n";
+  std::cout << "The largest number by the sum of digits is "
+            << largestNumberBySumOfDigits << "\n\n";
   return 0;
 }

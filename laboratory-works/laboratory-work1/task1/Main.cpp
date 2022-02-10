@@ -1,7 +1,8 @@
 #include <cmath>
 #include <iostream>
 
-int getReverseNumber(int number) {
+/// Returns the inverse number.
+int getInverseNumber(int number) {
   int reverseNumber = 0;
 
   while (number) {
@@ -11,7 +12,8 @@ int getReverseNumber(int number) {
   return reverseNumber;
 }
 
-bool isPalindrome(int number) { return number == getReverseNumber(number); }
+/// Returns true if the number is a palindrome.
+bool isPalindrome(int number) { return number == getInverseNumber(number); }
 
 int main() {
   const int initialNumber = 10;
