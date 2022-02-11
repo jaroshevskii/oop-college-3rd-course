@@ -47,7 +47,7 @@ double getArrayElement(size_t index) {
   case 9:
     return getRandomDouble(sqrt(17.0), sqrt(182.0));
   default:
-    std::cout << "error: Unknown index. The element will be set to 0.\n";
+    std::cerr << "error: Unknown index. The element will be set to 0.\n";
     return 0;
   }
 }
