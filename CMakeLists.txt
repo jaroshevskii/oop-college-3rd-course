@@ -11,4 +11,10 @@ add_custom_target(${PROJECT_NAME})
 add_dependencies(${PROJECT_NAME}
   LaboratorylWork1
   LaboratorylWork2
+  #LaboratorylWork3
+  #LaboratorylWork4
+  #LaboratorylWork5
+  #LaboratorylWork6
+  #LaboratorylWork7
+  #LaboratorylWork8
 )

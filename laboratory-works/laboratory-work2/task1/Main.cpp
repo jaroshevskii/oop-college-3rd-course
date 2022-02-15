@@ -3,21 +3,21 @@
 #include <iostream>
 #include <random>
 
-/// Get a random int number from min to max.
+/// Returns a random int number in the range from min to max.
 int getRandomInt(int min, int max) {
   std::mt19937 generator{std::random_device{}()};
   std::uniform_int_distribution<int> distribution{min, max};
   return distribution(generator);
 }
 
-/// Get a random double number from min to max.
+/// Returns a random double number in the range from min to max.
 double getRandomDouble(double min, double max) {
   std::mt19937 generator{std::random_device{}()};
   std::uniform_real_distribution<double> distribution{min, max};
   return distribution(generator);
 }
 
-/// Get an array element.
+/// Returns an array element.
 double getArrayElement(size_t index) {
   switch (index) {
   case 0:
@@ -26,14 +26,14 @@ double getArrayElement(size_t index) {
     return getRandomInt(100, 299);
   case 2:
     while (true) {
-      if (int element = getRandomInt(-35, 1); element % 2 == 0)
+      if (const auto element = getRandomInt(-35, 1); element % 2 == 0)
         return element;
     }
   case 3:
     return getRandomInt(-128, 127);
   case 4:
     while (true) {
-      if (int element = getRandomInt(-7, 12); element % 2 != 0)
+      if (const auto element = getRandomInt(-7, 12); element % 2 != 0)
         return element;
     }
   case 5:
@@ -47,8 +47,9 @@ double getArrayElement(size_t index) {
   case 9:
     return getRandomDouble(sqrt(17.0), sqrt(182.0));
   default:
-    std::cerr << "error: Unknown index. The element will be set to 0.\n";
-    return 0;
+    std::cerr << "error: Unknown " << index
+              << " array index. The element will be set to 0.\n";
+    return 0.0;
   }
 }
 
@@ -65,7 +66,7 @@ void printArray(const std::array<Type, Size> &array) {
 int main() {
   std::array<double, 10> array;
 
-  // Set array.
+  // Fill in the array.
   for (size_t i = 0; i < array.size(); ++i)
     array[i] = getArrayElement(i);
 
