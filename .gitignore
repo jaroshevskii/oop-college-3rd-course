@@ -4,7 +4,7 @@ temp/*
 # Build folder
 build/*
 
-# VS Code files for those working on multiple tools
+# VS Code files
 .vscode/*
 # !.vscode/settings.json
 # !.vscode/tasks.json
