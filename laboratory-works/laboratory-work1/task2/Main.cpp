@@ -1,13 +1,5 @@
 #include <iostream>
 
-/// Returns the number entered by the user.
-int getNumber() {
-  std::cout << "> ";
-  int number;
-  std::cin >> number;
-  return number;
-}
-
 /// Returns the sum of the digits of a number.
 int getSumOfDigits(int number) {
   int sumOfDigits = 0;
@@ -21,36 +13,35 @@ int getSumOfDigits(int number) {
 
 /// Returns the largest number by the sum of digits.
 int getLargestNumberBySumOfDigits() {
-  std::cout << "Enter integers (use 0 to end the entry).\n";
+  std::cout << "Enter numbers (use 0 to end the entry).\n";
 
   int largestNumber;
-  int sumOfDigitsOfLargestNumber;
+  int sumOfLargestNumber;
 
-  int number;
-  int sumOfDigits;
+  int currentNumber;
+  int sumOfСurrentNumber;
 
   while (true) {
     std::cout << "> ";
-    int number;
-    std::cin >> number;
+    std::cin >> currentNumber;
 
-    if (number == 0) {
+    if (currentNumber == 0) {
       std::cout << '\n';
       return largestNumber;
     }
 
-    sumOfDigits = getSumOfDigits(number);
+    sumOfСurrentNumber = getSumOfDigits(currentNumber);
 
-    if (sumOfDigits > sumOfDigitsOfLargestNumber) {
-      sumOfDigitsOfLargestNumber = sumOfDigits;
-      largestNumber = number;
+    if (sumOfСurrentNumber > sumOfLargestNumber) {
+      sumOfLargestNumber = sumOfСurrentNumber;
+      largestNumber = currentNumber;
     }
   }
 }
 
 int main() {
-  const int largestNumberBySumOfDigits = getLargestNumberBySumOfDigits();
-  std::cout << "The largest number by the sum of digits is "
+  const auto largestNumberBySumOfDigits = getLargestNumberBySumOfDigits();
+  std::cout << "Largest number by the sum of digits: "
             << largestNumberBySumOfDigits << "\n\n";
   return 0;
 }
