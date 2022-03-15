@@ -35,13 +35,16 @@ int getCountDifferentElements(const std::array<int, Size> &array) {
 int main() {
   const int randomMin = -10;
   const int randomMax = 10;
+  
+  std::cout << "Random min:  " << randomMin << '\n'
+            << "Random max:  " << randomMax << "\n\n";
 
   std::array<int, 10> array;
 
   // Fill in the array.
   for (auto &element : array)
     element = getRandomInt(randomMin, randomMax);
-  
+
   // Sort the array in ascending order.
   std::sort(array.begin(), array.end());
 
@@ -49,7 +52,6 @@ int main() {
 
   const auto countDifferentElements = getCountDifferentElements(array);
 
-  std::cout << "Count different elements: " << countDifferentElements
-            << "\n\n";
+  std::cout << "Count of different elements: " << countDifferentElements << "\n\n";
   return 0;
 }

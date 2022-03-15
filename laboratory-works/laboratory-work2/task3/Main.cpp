@@ -23,6 +23,9 @@ int main() {
   const int randomMin = -10;
   const int randomMax = 10;
 
+  std::cout << "Random min:  " << randomMin << '\n'
+            << "Random max:  " << randomMax << "\n\n";
+
   std::array<int, 12> array;
 
   // Fill in the array.
@@ -46,7 +49,7 @@ int main() {
             << "Index max:  " << indexMax << "\n\n";
 
   if (array[indexMin] == array[indexMax]) {
-    std::cout << "No need to swap the min and max elements. All elements are "
+    std::cout << "No need to swap the min and max elements. Elements are "
                  "the same.\n\n";
   } else {
     std::swap(array[indexMin], array[indexMax]);

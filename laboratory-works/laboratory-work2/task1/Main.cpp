@@ -18,7 +18,7 @@ double getRandomDouble(double min, double max) {
 }
 
 /// Returns an array element.
-double getArrayElement(size_t index) {
+double getArrayElement(size_t index) { 
   switch (index) {
   case 0:
     return getRandomInt(-4, 0);
