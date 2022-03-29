@@ -113,14 +113,10 @@ void Doctor::setServiceFees(double serveceFees) {
 
 void Doctor::print() {
   std::cout << firstName << ' ' << lastName << ' ' << middleName << ":\n"
-            << "  "
-            << "Specialty:               " << specialty << '\n'
-            << "  "
-            << "Experience:              " << experience << '\n'
-            << "  "
-            << "Max number of patients:  " << maxNumPatients << '\n'
-            << "  "
-            << "Service fees             " << serviceFees << "\n\n";
+            << "  " << "Specialty:              " << specialty << '\n'
+            << "  " << "Experience:             " << experience << '\n'
+            << "  " << "Max number of patients: " << maxNumPatients << '\n'
+            << "  " << "Service fees            " << serviceFees << "\n\n";
 }
 
 int main() {

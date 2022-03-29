@@ -1,10 +1,5 @@
-# Set the minimum version of CMake that can be used
-cmake_minimum_required(VERSION 3.5)
-
-# Set project name
 project(LaboratorylWork1)
 
-# Add sub directories
 add_subdirectory(task1)
 add_subdirectory(task2)
 

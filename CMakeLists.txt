@@ -1,20 +1,11 @@
-# Set the minimum version of CMake that can be used
 cmake_minimum_required(VERSION 3.5)
 
-# Set project name
 project(ObjectOrientedProgramming)
 
-# Add sub directories
 add_subdirectory(laboratory-works)
+add_subdirectory(temp)
 
 add_custom_target(${PROJECT_NAME})
 add_dependencies(${PROJECT_NAME}
-  LaboratorylWork1
-  LaboratorylWork2
-  #LaboratorylWork3
-  #LaboratorylWork4
-  #LaboratorylWork5
-  #LaboratorylWork6
-  #LaboratorylWork7
-  #LaboratorylWork8
+  LaboratorylWorks
 )
