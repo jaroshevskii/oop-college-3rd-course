@@ -3,7 +3,7 @@
 
 /// Returns the inverse number.
 int getInverseNumber(int number) {
-  int reverseNumber = 0;
+  int reverseNumber{0};
 
   while (number) {
     reverseNumber = reverseNumber * 10 + number % 10;
@@ -16,8 +16,8 @@ int getInverseNumber(int number) {
 bool isPalindrome(int number) { return number == getInverseNumber(number); }
 
 int main() {
-  const int initialNumber = 10;
-  const int finiteNumber = 1000;
+  const int initialNumber{10};
+  const int finiteNumber{1000};
 
   static_assert(initialNumber < finiteNumber,
                 "The initial number cannot be greater than the final one.");
