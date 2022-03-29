@@ -18,7 +18,7 @@ double getRandomDouble(double min, double max) {
 }
 
 /// Returns an array element.
-double getArrayElement(size_t index) { 
+double getArrayElement(int index) { 
   switch (index) {
   case 0:
     return getRandomInt(-4, 0);
@@ -26,15 +26,17 @@ double getArrayElement(size_t index) {
     return getRandomInt(100, 299);
   case 2:
     while (true) {
-      if (const auto element = getRandomInt(-35, 1); element % 2 == 0)
+      if (const auto element = getRandomInt(-35, 1); element % 2 == 0) {
         return element;
+      }
     }
   case 3:
     return getRandomInt(-128, 127);
   case 4:
     while (true) {
-      if (const auto element = getRandomInt(-7, 12); element % 2 != 0)
+      if (const auto element = getRandomInt(-7, 12); element % 2 != 0) {
         return element;
+      }
     }
   case 5:
     return getRandomDouble(-7.85, 28.0 * sqrt(3.0));
@@ -58,17 +60,19 @@ template <typename Type, size_t Size>
 void printArray(const std::array<Type, Size> &array) {
   std::cout << "Array:\n";
 
-  for (const auto &element : array)
+  for (const auto &element : array) {
     std::cout << "  " << element << '\n';
+  }
   std::cout << '\n';
 }
 
 int main() {
-  std::array<double, 10> array;
+  std::array<double, 10> array{};
 
   // Fill in the array.
-  for (size_t i = 0; i < array.size(); ++i)
+  for (int i = 0; i < array.size(); ++i) {
     array[i] = getArrayElement(i);
+  }
 
   printArray(array);
   return 0;
