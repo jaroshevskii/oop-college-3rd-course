@@ -14,31 +14,33 @@ template <typename Type, size_t Size>
 void printArray(const std::array<Type, Size> &array) {
   std::cout << "Array:";
 
-  for (const auto &element : array)
+  for (const auto &element : array) {
     std::cout << ' ' << element;
+  }
   std::cout << "\n\n";
 }
 
 int main() {
-  const int randomMin = -10;
-  const int randomMax = 10;
+  const int randomMin{-10};
+  const int randomMax{10};
 
   std::cout << "Random min:  " << randomMin << '\n'
             << "Random max:  " << randomMax << "\n\n";
 
-  std::array<int, 12> array;
+  std::array<int, 12> array{};
 
   // Fill in the array.
-  for (auto &element : array)
+  for (auto &element : array) {
     element = getRandomInt(randomMin, randomMax);
+  }
 
   printArray(array);
 
-  int indexMin = 0;
-  int indexMax = 0;
+  int indexMin{0};
+  int indexMax{0};
 
   // Find the index of the min and max element of the array.
-  for (size_t i = 1; i < array.size(); ++i) {
+  for (int i = 1; i < array.size(); ++i) {
     if (array[i] < array[indexMin])
       indexMin = i;
     if (array[i] > array[indexMax])

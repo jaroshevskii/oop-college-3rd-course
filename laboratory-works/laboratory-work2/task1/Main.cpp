@@ -18,7 +18,7 @@ double getRandomDouble(double min, double max) {
 }
 
 /// Returns an array element.
-double getArrayElement(int index) { 
+double getArrayElement(int index) {
   switch (index) {
   case 0:
     return getRandomInt(-4, 0);
@@ -26,7 +26,8 @@ double getArrayElement(int index) {
     return getRandomInt(100, 299);
   case 2:
     while (true) {
-      if (const auto element = getRandomInt(-35, 1); element % 2 == 0) {
+      const auto element = getRandomInt(-35, 1);
+      if (element % 2 == 0) {
         return element;
       }
     }
@@ -34,7 +35,8 @@ double getArrayElement(int index) {
     return getRandomInt(-128, 127);
   case 4:
     while (true) {
-      if (const auto element = getRandomInt(-7, 12); element % 2 != 0) {
+      const auto element = getRandomInt(-7, 12);
+      if (element % 2 != 0) {
         return element;
       }
     }

@@ -5,14 +5,15 @@
 
 /// Returns an int number in the range from min to max.
 int getInt(int min, int max) {
-  int number;
+  int number{};
 
   while (true) {
     std::cout << "> ";
     std::cin >> number;
 
-    if (number >= min && number <= max)
+    if (number >= min && number <= max) {
       return number;
+    }
 
     if (number < min) {
       std::cerr << "error: The number entered must be greater than or equal to "
@@ -36,17 +37,18 @@ template <typename Type, size_t Size>
 void printArray(const std::array<Type, Size> &array) {
   std::cout << "Array:";
 
-  for (const auto &element : array)
+  for (const auto &element : array) {
     std::cout << ' ' << element;
+  }
   std::cout << "\n\n";
 }
 
 /// Returns the index of the min array element by modulus.
 template <size_t Size>
-size_t getIndexOfMinElementByModulus(const std::array<int, Size> &array) {
-  size_t indexOfMinElement = 0;
+int getIndexOfMinElementByModulus(const std::array<int, Size> &array) {
+  int indexOfMinElement{0};
 
-  for (size_t i = 1; i < array.size(); ++i) {
+  for (int i{0}; i < array.size(); ++i) {
     if (abs(array[i]) < abs(array[indexOfMinElement]))
       indexOfMinElement = i;
   }
@@ -57,33 +59,35 @@ size_t getIndexOfMinElementByModulus(const std::array<int, Size> &array) {
 /// negative element.
 template <size_t Size>
 int getSumOfModulesOfElements(const std::array<int, Size> &array) {
-  bool negativeElementFound = false;
-  int sum = 0;
+  bool negativeElementFound{false};
+  int sum{0};
 
   for (const auto &element : array) {
-    if (negativeElementFound)
+    if (negativeElementFound) {
       sum += abs(element);
-    else if (element < 0)
+    } else if (element < 0) {
       negativeElementFound = true;
+    }
   }
   return sum;
 }
 
 int main() {
-  const auto intMin = std::numeric_limits<int>::min();
-  const auto intMax = std::numeric_limits<int>::max();
+  const auto intMin{std::numeric_limits<int>::min()};
+  const auto intMax{std::numeric_limits<int>::max()};
 
   std::cout << "Enter the max and min to fill the array with random numbers in "
                "this range.\n";
-  const auto randomMin = getInt(intMin, intMax - 1);
-  const auto randomMax = getInt(randomMin + 1, intMax);
+  const auto randomMin{getInt(intMin, intMax - 1)};
+  const auto randomMax{getInt(randomMin + 1, intMax)};
   std::cout << '\n';
 
-  std::array<int, 10> array;
+  std::array<int, 10> array{};
 
   // Fill in the array.
-  for (auto &element : array)
+  for (auto &element : array) {
     element = getRandomInt(randomMin, randomMax);
+  }
 
   printArray(array);
 
