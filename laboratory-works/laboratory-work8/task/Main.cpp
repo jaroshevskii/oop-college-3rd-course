@@ -2,126 +2,108 @@
 
 class Doctor {
 private:
-  std::string firstName;
-  std::string middleName;
-  std::string lastName;
+  std::string myFirstName{};
+  std::string myMiddleName{};
+  std::string myLastName{};
 
-  std::string specialty;
-  int experience;
-  int maxNumPatients;
+  std::string mySpecialty{};
+  int myExperience{};
+  int myMaxNumPatients{};
 
   // Service fees for one patient.
-  double serviceFees;
+  double myServiceFees{};
 
 public:
-  Doctor();
+  Doctor() = default;
 
   Doctor(const std::string &firstName, const std::string &middleName,
          const std::string &lastName, const std::string &specialty,
-         int experience, int maxNumParients, double serviceFees);
+         int experience, int maxNumParients, double serviceFees)
+      : myFirstName{firstName}, myMiddleName{middleName}, myLastName{lastName},
+        mySpecialty{specialty}, myExperience{experience},
+        myMaxNumPatients{maxNumParients}, myServiceFees{serviceFees} {}
 
-  ~Doctor();
+  // MARK: get- methods.
 
-  std::string getFirstName();
-  std::string getMiddleName();
-  std::string getLastName();
-  std::string getSpecialty();
-  int getExperience();
-  int getMaxNumParients();
-  double getServiceFees();
+  /// Returns the first name.
+  std::string getFirstName() const { return myFirstName; }
 
-  void setFirstName(const std::string &firstName);
-  void setMiddleName(const std::string &middleName);
-  void setLastName(const std::string &lastName);
-  void setSpecialty(const std::string &specialty);
-  void setExperience(int exprience);
-  void setMaxNumParients(int maxNumParients);
-  void setServiceFees(double serveceFees);
+  /// Returns the middle name.
+  std::string getMiddleName() const { return myMiddleName; }
 
-  void print();
+  /// Returns the last name.
+  std::string getLastName() const { return myLastName; }
 
-  // TODO: Add compare class field.
+  /// Returns the specialty.
+  std::string getSpecialty() const { return mySpecialty; }
+
+  /// Returns the experience.
+  int getExperience() const { return myExperience; }
+
+  /// Returns the max number of partients.
+  int getMaxNumParients() const { return myMaxNumPatients; }
+
+  /// Returns the servece fees.
+  double getServiceFees() const { return myServiceFees; }
+
+  // MARK: set- methods.
+
+  /// Set the first name.
+  void setFirstName(const std::string &firstName) { myFirstName = firstName; }
+
+  /// Set the middle name.
+  void setMiddleName(const std::string &middleName) {
+    myMiddleName = middleName;
+  }
+
+  /// Set the last name.
+  void setLastName(const std::string &lastName) { myLastName = lastName; }
+
+  /// Set the specialty.
+  void setSpecialty(const std::string &specialty) { mySpecialty = specialty; }
+
+  /// Set the exprience.
+  void setExperience(int exprience) { myExperience = exprience; }
+
+  /// Set the max number of partients.
+  void setMaxNumParients(int maxNumParients) {
+    myMaxNumPatients = maxNumParients;
+  }
+
+  /// Set the serviece fees.
+  void setServiceFees(double serveceFees) { myServiceFees = serveceFees; }
+
+  // MARK: Other methods.
+
+  /// Print class fields.
+  void print() const {
+    std::cout << myFirstName << ' ' << myMiddleName << ' ' << myLastName
+              << ":\n"
+              << "  Specialty:              " << mySpecialty << '\n'
+              << "  Experience:             " << myExperience << '\n'
+              << "  Max number of patients: " << myMaxNumPatients << '\n'
+              << "  Service fees            " << myServiceFees << "\n\n";
+  }
+
+  /// Compare current and transmissions class by max number of patients.
+  void compare(const Doctor &doctor) const {
+    std::cout << myFirstName << ' ' << myMiddleName << ' ' << myLastName
+              << ":\n"
+              << "  Max number of patients: " << myMaxNumPatients << "\n\n"
+              << doctor.myFirstName << ' ' << doctor.myMiddleName << ' '
+              << doctor.myLastName << ":\n"
+              << "  Max number of patients: " << doctor.myMaxNumPatients
+              << "\n\n";
+  }
 
   // TODO: Add another class field.
 };
 
-Doctor::Doctor() {
-  firstName = "";
-  middleName = "";
-  lastName = "";
-
-  specialty = "";
-  experience = 0;
-  maxNumPatients = 0;
-  serviceFees = 0.0;
-}
-
-Doctor::Doctor(const std::string &firstName, const std::string &lastName,
-               const std::string &middleName, const std::string &specialty,
-               int experience, int maxNumPatients, double serviceFees) {
-  Doctor::firstName = firstName;
-  Doctor::middleName = middleName;
-  Doctor::lastName = lastName;
-
-  Doctor::specialty = specialty;
-  Doctor::experience = experience;
-  Doctor::maxNumPatients = maxNumPatients;
-  Doctor::serviceFees = serviceFees;
-}
-
-Doctor::~Doctor() {}
-
-std::string Doctor::getFirstName() { return firstName; }
-
-std::string Doctor::getMiddleName() { return middleName; }
-
-std::string Doctor::getLastName() { return lastName; }
-
-std::string Doctor::getSpecialty() { return specialty; }
-
-int Doctor::getExperience() { return experience; }
-
-int Doctor::getMaxNumParients() { return maxNumPatients; }
-
-double Doctor::getServiceFees() { return serviceFees; }
-
-void Doctor::setFirstName(const std::string &firstName) {
-  Doctor::firstName = firstName;
-}
-
-void Doctor::setMiddleName(const std::string &middleName) {
-  Doctor::middleName = middleName;
-}
-
-void Doctor::setLastName(const std::string &lastName) {
-  Doctor::lastName = lastName;
-}
-
-void Doctor::setSpecialty(const std::string &specialty) {
-  Doctor::specialty = specialty;
-}
-
-void Doctor::setExperience(int exprience) { Doctor::experience = experience; }
-
-void Doctor::setMaxNumParients(int maxNumParients) {
-  Doctor::maxNumPatients = maxNumParients;
-}
-
-void Doctor::setServiceFees(double serveceFees) {
-  Doctor::serviceFees = serveceFees;
-}
-
-void Doctor::print() {
-  std::cout << firstName << ' ' << lastName << ' ' << middleName << ":\n"
-            << "  " << "Specialty:              " << specialty << '\n'
-            << "  " << "Experience:             " << experience << '\n'
-            << "  " << "Max number of patients: " << maxNumPatients << '\n'
-            << "  " << "Service fees            " << serviceFees << "\n\n";
-}
-
 int main() {
   Doctor doctor{"First", "Second", "Middle", "???", 3, 5, 25.0};
-  
+
   doctor.print();
+
+  doctor.compare(Doctor{"First", "Second", "Middle", "???", 3, 5, 25.0});
   return 0;
 }
