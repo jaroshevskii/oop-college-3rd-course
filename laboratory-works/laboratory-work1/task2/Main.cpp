@@ -40,7 +40,7 @@ int getLargestNumberBySumOfDigits() {
 }
 
 int main() {
-  const int largestNumberBySumOfDigits = getLargestNumberBySumOfDigits();
+  const int largestNumberBySumOfDigits{getLargestNumberBySumOfDigits()};
   std::cout << "Largest number by the sum of digits: "
             << largestNumberBySumOfDigits << "\n\n";
   return 0;
