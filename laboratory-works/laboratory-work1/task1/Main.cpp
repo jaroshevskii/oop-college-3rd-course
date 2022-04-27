@@ -22,7 +22,7 @@ int main() {
                 "The initial number cannot be greater than the final one.");
 
   for (int number = initialNumber; number < finiteNumber; ++number) {
-    const int numberInDegree = number * number;
+    const int numberInDegree{number * number};
 
     if (isPalindrome(numberInDegree)) {
       std::cout << "Number:    " << number << "\n"
