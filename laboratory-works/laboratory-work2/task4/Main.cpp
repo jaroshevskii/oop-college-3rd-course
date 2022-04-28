@@ -60,8 +60,7 @@ int getNumDifferentNumbers(const std::array<int, Size> &numbers) {
 
 int main() {
   std::cout << "Enter the max and min number to fill the numbers with random "
-               "values in "
-               "this range.\n";
+               "values in this range.\n";
 
   using integer = std::numeric_limits<int>;
   const auto randomMin = getIntFromUser(integer::min(), integer::max() - 1);
