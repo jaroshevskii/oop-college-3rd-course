@@ -1,10 +1,12 @@
 #include <array>
+#include <cmath>
 #include <iostream>
 #include <limits>
 #include <random>
+#include <string>
 
-/// Returns an int number in the range from min to max.
-int getInt(int min, int max) {
+/// Returns the int number from the user in the range from min to max.
+int getIntFromUser(int min, int max) {
   int number{};
 
   while (true) {
@@ -32,74 +34,77 @@ int getRandomInt(int min, int max) {
   return distribution(generator);
 }
 
-/// Print array.
+/// Prints array.
 template <typename Type, size_t Size>
-void printArray(const std::array<Type, Size> &array) {
-  std::cout << "Array:";
+void printArray(const std::array<Type, Size> &array,
+                const std::string &name = "Array",
+                const std::string &terminator = "\n") {
+  std::cout << name << ":\n";
 
   for (const auto &element : array) {
-    std::cout << ' ' << element;
+    std::cout << "  " << element << '\n';
   }
-  std::cout << "\n\n";
+  std::cout << terminator;
 }
 
-/// Returns the index of the min array element by modulus.
+/// Returns the index of the minimum number modulo.
 template <size_t Size>
-int getIndexOfMinElementByModulus(const std::array<int, Size> &array) {
+int getIndexOfMinNumberModulo(const std::array<int, Size> &numbers) {
   int indexOfMinElement{0};
 
-  for (int i{0}; i < array.size(); ++i) {
-    if (abs(array[i]) < abs(array[indexOfMinElement]))
+  for (int i{0}; i < numbers.size(); ++i) {
+    if (std::abs(numbers[i]) < std::abs(numbers[indexOfMinElement])) {
       indexOfMinElement = i;
+    }
   }
   return indexOfMinElement;
 }
 
-/// Returns the sum of the modules of the array elements located after the first
-/// negative element.
+/// Returns the sum of the modules of numbers located after the first negative
+/// number.
 template <size_t Size>
-int getSumOfModulesOfElements(const std::array<int, Size> &array) {
-  bool negativeElementFound{false};
+int getSumOfModulesOfNumbers(const std::array<int, Size> &numbers) {
+  bool negativeNumberFound{false};
   int sum{0};
 
-  for (const auto &element : array) {
-    if (negativeElementFound) {
-      sum += abs(element);
-    } else if (element < 0) {
-      negativeElementFound = true;
+  for (const auto &number : numbers) {
+    if (negativeNumberFound) {
+      sum += std::abs(number);
+    } else if (number < 0) {
+      negativeNumberFound = true;
     }
   }
   return sum;
 }
 
 int main() {
-  const auto intMin{std::numeric_limits<int>::min()};
-  const auto intMax{std::numeric_limits<int>::max()};
-
-  std::cout << "Enter the max and min to fill the array with random numbers in "
+  std::cout << "Enter the max and min number to fill the numbers with random values in "
                "this range.\n";
-  const auto randomMin{getInt(intMin, intMax - 1)};
-  const auto randomMax{getInt(randomMin + 1, intMax)};
+
+  using integer = std::numeric_limits<int>;
+  const auto randomMin = getIntFromUser(integer::min(), integer::max() - 1);
+  const auto randomMax = getIntFromUser(integer::min() + 1, integer::max());
+
   std::cout << '\n';
 
-  std::array<int, 10> array{};
+  std::array<int, 10> numbers{};
 
-  // Fill in the array.
-  for (auto &element : array) {
-    element = getRandomInt(randomMin, randomMax);
+  // Fill in the numbers with random values.
+  for (auto &number : numbers) {
+    number = getRandomInt(randomMin, randomMax);
   }
 
-  printArray(array);
+  printArray(numbers, "Numbers");
 
-  const auto indexOfMinElementByModulus = getIndexOfMinElementByModulus(array);
+  // Finds and prints the minimum modulus index.
+  const auto index = getIndexOfMinNumberModulo(numbers);
+  std::cout << "Index of the min number modulo: " << index << '\n';
 
-  std::cout << "Index of the min element by modulus: "
-            << indexOfMinElementByModulus << "\n\n";
-
-  const auto sumOfModulesOfElements = getSumOfModulesOfElements(array);
-
-  std::cout << "Sum of the modules of the elements located after the first "
-               "negative element: "
-            << sumOfModulesOfElements << "\n\n";
+  // Finds and prints the sum of the modules of the numbers located after the
+  // first negative number.
+  const auto sum = getSumOfModulesOfNumbers(numbers);
+  std::cout << "Sum of the modules of the numbers located after the first "
+               "negative number: "
+            << sum << '\n';
   return 0;
 }
