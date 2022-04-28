@@ -45,7 +45,13 @@ public:
   int getMaxNumParients() const { return myMaxNumPatients; }
 
   /// Returns the servece fees.
-  double getServiceFees() const { return myServiceFees; }
+  double getServiceFees(int numParients = 1) const {
+    if (numParients > myMaxNumPatients) {
+      std::cerr << "error: Number of parties cannot exceed the max number of "
+                   "parties.\n";
+    }
+    return myServiceFees * numParients;
+  }
 
   // MARK: set- methods.
 
@@ -96,8 +102,6 @@ public:
               << "  Max number of patients: " << doctor.myMaxNumPatients
               << '\n';
   }
-
-  // TODO: Add another class field.
 };
 
 int main() {
@@ -106,5 +110,9 @@ int main() {
   doctor.print();
 
   doctor.compare(Doctor{"First", "Middle", "Last", "???", 3, 5, 25.0});
+  std::cout << '\n';
+
+  const auto serviceFees = doctor.getServiceFees(3);
+  std::cout << "Service fees: " << serviceFees << '\n';
   return 0;
 }
