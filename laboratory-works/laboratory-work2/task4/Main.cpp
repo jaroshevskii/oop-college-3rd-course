@@ -3,6 +3,28 @@
 #include <iostream>
 #include <random>
 
+/// Returns the int number from the user in the range from min to max.
+int getIntFromUser(int min, int max) {
+  int number{};
+
+  while (true) {
+    std::cout << "> ";
+    std::cin >> number;
+
+    if (number >= min && number <= max) {
+      return number;
+    }
+
+    if (number < min) {
+      std::cerr << "error: The number entered must be greater than or equal to "
+                << min << ".";
+    } else if (number > max) {
+      std::cerr << "error: The number entered must be less than or equal to "
+                << max << ".";
+    }
+  }
+}
+
 /// Returns a random int number in the range from min to max.
 int getRandomInt(int min, int max) {
   std::mt19937 generator{std::random_device{}()};
@@ -10,24 +32,26 @@ int getRandomInt(int min, int max) {
   return distribution(generator);
 }
 
-/// Print array.
+/// Prints array.
 template <typename Type, size_t Size>
-void printArray(const std::array<Type, Size> &array) {
-  std::cout << "Array:";
+void printArray(const std::array<Type, Size> &array,
+                const std::string &name = "Array",
+                const std::string &terminator = "\n") {
+  std::cout << name << ":\n";
 
   for (const auto &element : array) {
-    std::cout << ' ' << element;
+    std::cout << "  " << element << '\n';
   }
-  std::cout << "\n\n";
+  std::cout << terminator;
 }
 
-/// Returns the count different elements in an ordered array.
+/// Returns the number of different numbers after the first negative number.
 template <size_t Size>
-int getCountDifferentElements(const std::array<int, Size> &array) {
+int getNumDifferentNumbers(const std::array<int, Size> &numbers) {
   int numDifferentElements{1};
 
-  for (int i{1}; i < array.size(); ++i) {
-    if (array[i] != array[i - 1]) {
+  for (int i{1}; i < numbers.size(); ++i) {
+    if (numbers[i] != numbers[i - 1]) {
       ++numDifferentElements;
     }
   }
@@ -35,26 +59,32 @@ int getCountDifferentElements(const std::array<int, Size> &array) {
 }
 
 int main() {
-  const int randomMin{-10};
-  const int randomMax{10};
-  
-  std::cout << "Random min: " << randomMin << '\n'
-            << "Random max: " << randomMax << "\n\n";
+  std::cout << "Enter the max and min number to fill the numbers with random "
+               "values in "
+               "this range.\n";
 
-  std::array<int, 10> array{};
+  using integer = std::numeric_limits<int>;
+  const auto randomMin = getIntFromUser(integer::min(), integer::max() - 1);
+  const auto randomMax = getIntFromUser(integer::min() + 1, integer::max());
 
-  // Fill in the array.
-  for (auto &element : array) {
-    element = getRandomInt(randomMin, randomMax);
+  std::cout << '\n';
+
+  std::array<int, 10> numbers{};
+
+  // Fill in the numbers with random values.
+  for (auto &number : numbers) {
+    number = getRandomInt(randomMin, randomMax);
   }
 
   // Sort the array in ascending order.
-  std::sort(array.begin(), array.end());
+  std::sort(numbers.begin(), numbers.end());
 
-  printArray(array);
+  printArray(numbers, "Numbers");
 
-  const auto countDifferentElements = getCountDifferentElements(array);
-
-  std::cout << "Count of different elements: " << countDifferentElements << "\n\n";
+  // Finds and prints the number of different numbers after the first negative
+  // number.
+  const auto numDifferentNumbes = getNumDifferentNumbers(numbers);
+  std::cout << "Number of different numbers after the first negative number: "
+            << numDifferentNumbes << '\n';
   return 0;
 }
