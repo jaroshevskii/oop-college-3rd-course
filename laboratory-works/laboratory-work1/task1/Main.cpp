@@ -15,18 +15,17 @@ int getInverseNumber(int number) {
 bool isPalindrome(int number) { return number == getInverseNumber(number); }
 
 int main() {
-  const int initialNumber{10};
-  const int finiteNumber{100};
+  const int beginNumber{10};
+  const int endNumber{100};
 
-  static_assert(initialNumber < finiteNumber,
+  static_assert(beginNumber < endNumber,
                 "The initial number cannot be greater than the final one.");
 
-  for (int number = initialNumber; number < finiteNumber; ++number) {
+  for (int number = beginNumber; number < endNumber; ++number) {
     const int numberInDegree{number * number};
 
     if (isPalindrome(numberInDegree)) {
-      std::cout << "Number:    " << number << "\n"
-                << "Palindrom: " << numberInDegree << "\n\n";
+      std::cout << number << " (" << numberInDegree << ")\n";
     }
   }
   return 0;
