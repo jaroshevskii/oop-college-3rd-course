@@ -75,7 +75,7 @@ public:
 
   // MARK: Other methods.
 
-  /// Print class fields.
+  /// Prints class fields.
   void print() const {
     std::cout << myFirstName << ' ' << myMiddleName << ' ' << myLastName
               << ":\n"
@@ -100,10 +100,10 @@ public:
 };
 
 int main() {
-  Doctor doctor{"First", "Second", "Middle", "???", 3, 5, 25.0};
+  Doctor doctor{"First", "Middle", "Last", "???", 3, 5, 25.0};
 
   doctor.print();
 
-  doctor.compare(Doctor{"First", "Second", "Middle", "???", 3, 5, 25.0});
+  doctor.compare(Doctor{"First", "Middle", "Last", "???", 3, 5, 25.0});
   return 0;
 }
