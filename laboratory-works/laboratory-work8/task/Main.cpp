@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 class Doctor {
 private:
@@ -76,7 +77,7 @@ public:
   // MARK: Other methods.
 
   /// Prints class fields.
-  void print() const {
+  void print(const std::string &terminator = "\n") const {
     std::cout << myFirstName << ' ' << myMiddleName << ' ' << myLastName
               << ":\n"
               << "  Specialty:              " << mySpecialty << '\n'
@@ -93,7 +94,7 @@ public:
               << doctor.myFirstName << ' ' << doctor.myMiddleName << ' '
               << doctor.myLastName << ":\n"
               << "  Max number of patients: " << doctor.myMaxNumPatients
-              << "\n\n";
+              << '\n';
   }
 
   // TODO: Add another class field.
