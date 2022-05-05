@@ -2,7 +2,7 @@
 
 /// Returns the sum of the digits of a number.
 int getSumOfDigits(int number) {
-  int sumOfDigits{0};
+  auto sumOfDigits = 0;
 
   while (number) {
     sumOfDigits += number % 10;
@@ -15,11 +15,11 @@ int getSumOfDigits(int number) {
 int getLargestNumberBySumOfDigits() {
   std::cout << "Enter numbers (use 0 to end the entry).\n";
 
-  int largestNumber{};
-  int sumOfLargestNumber{};
+  auto largestNumber = 0;
+  auto sumOfLargestNumber = 0;
 
-  int currentNumber{};
-  int sumOfСurrentNumber{};
+  auto currentNumber = 0;
+  auto sumOfСurrentNumber = 0;
 
   while (true) {
     std::cout << "> ";

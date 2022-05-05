@@ -2,27 +2,27 @@
 
 /// Returns the inverse number.
 int getInverseNumber(int number) {
-  int reverseNumber{0};
+  auto inverseNumber = 0;
 
   while (number) {
-    reverseNumber = reverseNumber * 10 + number % 10;
+    inverseNumber = inverseNumber * 10 + number % 10;
     number /= 10;
   }
-  return reverseNumber;
+  return inverseNumber;
 }
 
 /// Returns true if the number is a palindrome.
 bool isPalindrome(int number) { return number == getInverseNumber(number); }
 
 int main() {
-  const int beginNumber{10};
-  const int endNumber{100};
+  const auto beginNumber = 10;
+  const auto endNumber = 100;
 
   static_assert(beginNumber < endNumber,
                 "The initial number cannot be greater than the final one.");
 
-  for (int number = beginNumber; number < endNumber; ++number) {
-    const int numberInDegree{number * number};
+  for (auto number = beginNumber; number < endNumber; ++number) {
+    const auto numberInDegree = number * number;
 
     if (isPalindrome(numberInDegree)) {
       std::cout << number << " (" << numberInDegree << ")\n";
