@@ -105,7 +105,7 @@ public:
 };
 
 int main() {
-  Doctor doctor{"First", "Middle", "Last", "???", 3, 5, 25.0};
+  const auto doctor = Doctor{"First", "Middle", "Last", "???", 3, 5, 25.0};
 
   doctor.print();
 
