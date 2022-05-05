@@ -5,7 +5,7 @@
 
 /// Returns the int number from the user in the range from min to max.
 int getIntFromUser(int min, int max) {
-  int number{};
+  auto number = 0;
 
   while (true) {
     std::cout << "> ";
@@ -27,8 +27,8 @@ int getIntFromUser(int min, int max) {
 
 /// Returns a random int number in the range from min to max.
 int getRandomInt(int min, int max) {
-  std::mt19937 generator{std::random_device{}()};
-  std::uniform_int_distribution<int> distribution{min, max};
+  auto generator = std::mt19937{std::random_device{}()};
+  auto distribution = std::uniform_int_distribution<int>{min, max};
   return distribution(generator);
 }
 
@@ -48,9 +48,9 @@ void printArray(const std::array<Type, Size> &array,
 /// Returns the number of different numbers after the first negative number.
 template <size_t Size>
 int getNumDifferentNumbers(const std::array<int, Size> &numbers) {
-  int numDifferentElements{1};
+  auto numDifferentElements = 1;
 
-  for (int i{1}; i < numbers.size(); ++i) {
+  for (auto i = 1; i < numbers.size(); ++i) {
     if (numbers[i] != numbers[i - 1]) {
       ++numDifferentElements;
     }
@@ -68,7 +68,7 @@ int main() {
 
   std::cout << '\n';
 
-  std::array<int, 10> numbers{};
+  auto numbers = std::array<int, 10>{};
 
   // Fill in the numbers with random values.
   for (auto &number : numbers) {

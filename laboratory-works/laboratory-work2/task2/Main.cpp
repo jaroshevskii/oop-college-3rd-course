@@ -7,7 +7,7 @@
 
 /// Returns the int number from the user in the range from min to max.
 int getIntFromUser(int min, int max) {
-  int number{};
+  auto number = 0;
 
   while (true) {
     std::cout << "> ";
@@ -29,8 +29,8 @@ int getIntFromUser(int min, int max) {
 
 /// Returns a random int number in the range from min to max.
 int getRandomInt(int min, int max) {
-  std::mt19937 generator{std::random_device{}()};
-  std::uniform_int_distribution<int> distribution{min, max};
+  auto generator = std::mt19937{std::random_device{}()};
+  auto distribution = std::uniform_int_distribution<int>{min, max};
   return distribution(generator);
 }
 
@@ -50,9 +50,9 @@ void printArray(const std::array<Type, Size> &array,
 /// Returns the index of the minimum number modulo.
 template <size_t Size>
 int getIndexOfMinNumberModulo(const std::array<int, Size> &numbers) {
-  int indexOfMinElement{0};
+  auto indexOfMinElement = 0;
 
-  for (int i{0}; i < numbers.size(); ++i) {
+  for (auto i = 0; i < numbers.size(); ++i) {
     if (std::abs(numbers[i]) < std::abs(numbers[indexOfMinElement])) {
       indexOfMinElement = i;
     }
@@ -64,8 +64,8 @@ int getIndexOfMinNumberModulo(const std::array<int, Size> &numbers) {
 /// number.
 template <size_t Size>
 int getSumOfModulesOfNumbers(const std::array<int, Size> &numbers) {
-  bool negativeNumberFound{false};
-  int sum{0};
+  auto negativeNumberFound = false;
+  auto sum = 0;
 
   for (const auto &number : numbers) {
     if (negativeNumberFound) {
@@ -87,7 +87,7 @@ int main() {
 
   std::cout << '\n';
 
-  std::array<int, 10> numbers{};
+  auto numbers = std::array<int, 10>{};
 
   // Fill in the numbers with random values.
   for (auto &number : numbers) {

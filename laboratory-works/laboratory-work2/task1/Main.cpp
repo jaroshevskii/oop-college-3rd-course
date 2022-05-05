@@ -6,15 +6,15 @@
 
 /// Returns a random int number in the range from min to max.
 int getRandomInt(int min, int max) {
-  std::mt19937 generator{std::random_device{}()};
-  std::uniform_int_distribution<int> distribution{min, max};
+  auto generator = std::mt19937{std::random_device{}()};
+  auto distribution = std::uniform_int_distribution<int>{min, max};
   return distribution(generator);
 }
 
 /// Returns a random double number in the range from min to max.
 double getRandomDouble(double min, double max) {
-  std::mt19937 generator{std::random_device{}()};
-  std::uniform_real_distribution<double> distribution{min, max};
+  auto generator = std::mt19937{std::random_device{}()};
+  auto distribution = std::uniform_real_distribution<double>{min, max};
   return distribution(generator);
 }
 
@@ -70,10 +70,10 @@ void printArray(const std::array<Type, Size> &array,
 }
 
 int main() {
-  std::array<double, 10> numbers{};
+  auto numbers = std::array<double, 10>{};
 
   // Fill in the numbers.
-  for (int i{0}; i < numbers.size(); ++i) {
+  for (auto i = 0; i < numbers.size(); ++i) {
     numbers[i] = getSomeNumber(i);
   }
 

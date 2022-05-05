@@ -4,7 +4,7 @@
 
 /// Returns the int number from the user in the range from min to max.
 int getIntFromUser(int min, int max) {
-  int number{};
+  auto number = 0;
 
   while (true) {
     std::cout << "> ";
@@ -26,8 +26,8 @@ int getIntFromUser(int min, int max) {
 
 /// Returns a random int number in the range from min to max.
 int getRandomInt(int min, int max) {
-  std::mt19937 generator{std::random_device{}()};
-  std::uniform_int_distribution<int> distribution{min, max};
+  auto generator = std::mt19937{std::random_device{}()};
+  auto distribution = std::uniform_int_distribution<int>{min, max};
   return distribution(generator);
 }
 
@@ -55,7 +55,7 @@ int main() {
 
   std::cout << '\n';
 
-  std::array<int, 12> numbers{};
+  auto numbers = std::array<int, 12>{};
 
   // Fill in the numbers with random values.
   for (auto &number : numbers) {
@@ -64,11 +64,11 @@ int main() {
 
   printArray(numbers, "Numbers");
 
-  int indexMin{0};
-  int indexMax{0};
+  auto indexMin = 0;
+  auto indexMax = 0;
 
   // Finds the index of the min and max number in numbers.
-  for (int i{1}; i < numbers.size(); ++i) {
+  for (auto i = 1; i < numbers.size(); ++i) {
     if (numbers[i] < numbers[indexMin]) {
       indexMin = i;
     } else if (numbers[i] > numbers[indexMax])
