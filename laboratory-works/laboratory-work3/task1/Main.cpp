@@ -16,7 +16,7 @@ constexpr auto makeArray2D() {
   return std::array<std::array<Type, NumCols>, NumRows>{};
 }
 
-/// Returns a 2D array of numbers
+/// Returns a 2D array of numbers.
 constexpr auto makeNumbers() {
   auto numbers = makeArray2D<double, 5, 5>();
   numbers = {{{0.0, 1.0, 2.0, 3.0, 4.0},
