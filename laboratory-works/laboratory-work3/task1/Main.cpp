@@ -155,8 +155,8 @@ int main() {
   const auto numbers = makeNumbers();
   printNumbers(numbers);
 
-  Number numberMin{};
-  Number numberMax{};
+  auto numberMin = Number{};
+  auto numberMax = Number{};
 
   // Finds and prints the min and max number.
   setNumberMinAndMax(numberMin, numberMax, numbers);
