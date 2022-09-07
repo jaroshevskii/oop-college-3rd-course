@@ -9,7 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_subdirectory(laboratory-works)
 add_subdirectory(temp)
 
-add_custom_target(${PROJECT_NAME})
-add_dependencies(${PROJECT_NAME}
+add_custom_target(ObjectOrientedProgramming)
+add_dependencies(ObjectOrientedProgramming
   LaboratorylWorks
 )
