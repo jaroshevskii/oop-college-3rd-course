@@ -9,8 +9,8 @@ add_subdirectory(laboratory-work3)
 # add_subdirectory(laboratory-work7)
 add_subdirectory(laboratory-work8)
 
-add_custom_target(${PROJECT_NAME})
-add_dependencies(${PROJECT_NAME}
+add_custom_target(LaboratorylWorks)
+add_dependencies(LaboratorylWorks
   LaboratorylWork1
   LaboratorylWork2
   LaboratorylWork3
