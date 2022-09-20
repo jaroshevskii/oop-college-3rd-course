@@ -1,4 +1,4 @@
-# Object-Oriented Programming
+# Object-oriented programming
 
 Repository with object-oriented programming tasks (college 3rd course).
 
